@@ -36,13 +36,8 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          # Automatically inject basePath in your Next.js config file, and a
-          # static image prefix.
-          static_site_generator: next
       - name: Restore cache
+
         uses: actions/cache@v4
         with:
           path: |
