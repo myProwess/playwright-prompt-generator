@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Terminal, Zap, BookOpen, Search, Code, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Terminal, Zap, BookOpen, Search, CheckCircle2, ArrowRight, MousePointer2, Sparkles, Layout } from 'lucide-react';
 import Link from 'next/link';
 import promptsData from '@/data/prompts.json';
 import PromptCard from '@/components/PromptCard';
@@ -11,148 +11,167 @@ export default function Home() {
   const beginnerPrompts = promptsData.filter(p => p.difficulty === 'Beginner').slice(0, 3);
 
   return (
-    <div className="flex flex-col gap-24">
+    <div className="flex flex-col gap-24 md:gap-32 pb-24">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden flex flex-col items-center text-center max-w-4xl mx-auto">
+      <section className="relative pt-20 pb-12 overflow-hidden flex flex-col items-center text-center max-w-5xl mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 p-1.5 rounded-2xl bg-primary-50 dark:bg-primary-900/10 border border-primary-100 dark:border-primary-500/10 inline-flex items-center gap-2 pr-4 shadow-sm"
+          className="mb-10 p-1 rounded-2xl bg-input-bg border border-border inline-flex items-center gap-3 pr-5 shadow-sm overflow-hidden relative"
         >
-          <div className="bg-primary-600 px-3 py-1 rounded-xl text-white text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-primary-500/20">
+          <div className="bg-insta px-4 py-1.5 rounded-xl text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-orange-500/20">
             NEW
           </div>
-          <span className="text-xs font-bold text-primary-700 dark:text-primary-400">Playwright 1.50+ optimized prompts</span>
+          <span className="text-[11px] font-black uppercase tracking-wider text-muted flex items-center gap-2">
+            <Sparkles className="w-3.5 h-3.5 text-insta" /> Playwright 1.50+ optimized prompts
+          </span>
         </motion.div>
 
         <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-black tracking-tight leading-[1.1] mb-8"
+          className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-10 text-foreground"
         >
-          The <span className="text-primary-600">Fastest</span> Way to Generate <span className="underline decoration-primary-300 dark:decoration-primary-700 underline-offset-8">Playwright</span> Tests
+           Generate <span className="text-insta italic">Playwright</span> <br className="hidden md:block" /> Tests in <span className="underline decoration-insta/20 decoration-8 underline-offset-[12px]">Seconds</span>
         </motion.h1>
          
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mb-12 font-medium"
+          className="text-lg md:text-2xl text-muted max-w-3xl mb-14 font-black leading-relaxed"
         >
-          Stop writing repetitive boilerplate. Use our expert-curated prompt library to generate high-quality, standardized Playwright scripts with GitHub Copilot in seconds.
+          Stop writing repetitive boilerplate. Use our expert-curated library to generate高品质, standardized automation with <span className="text-foreground font-black">GitHub Copilot</span>.
         </motion.p>
 
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-4"
+          className="flex flex-wrap items-center justify-center gap-6"
         >
           <Link 
             href="/library" 
-            className="px-8 py-4 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-bold text-lg shadow-2xl shadow-primary-600/30 transition-all hover:scale-[1.03] active:scale-[0.98] flex items-center gap-3"
+            className="px-10 py-5 rounded-3xl bg-insta text-white font-black text-lg shadow-[0_20px_50px_-15px_rgba(234,88,12,0.4)] hover:scale-[1.05] active:scale-[0.98] transition-all flex items-center gap-4 uppercase tracking-widest"
           >
             Explore Library
-            <Search className="w-5 h-5 opacity-80" />
+            <Search className="w-5 h-5" />
           </Link>
           <Link 
             href="/guides" 
-            className="px-8 py-4 rounded-2xl glass-card border-border hover:bg-slate-50 dark:hover:bg-slate-900 font-bold text-lg transition-all flex items-center gap-3"
+            className="px-10 py-5 rounded-3xl bg-input-bg border border-border hover:bg-white dark:hover:bg-white/10 font-black text-lg transition-all flex items-center gap-4 uppercase tracking-widest text-foreground"
           >
             How it works
-            <BookOpen className="w-5 h-5 text-primary-600" />
+            <BookOpen className="w-5 h-5 text-insta" />
           </Link>
         </motion.div>
 
-        {/* Floating background blobs */}
-        <div className="absolute top-0 -left-64 w-[500px] h-[500px] bg-primary-500/5 dark:bg-primary-500/10 rounded-full blur-[120px] -z-10" />
-        <div className="absolute bottom-0 -right-64 w-[500px] h-[500px] bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-[120px] -z-10" />
+        {/* Dynamic Background elements */}
+        <div className="absolute top-0 -left-64 w-[600px] h-[600px] bg-insta/10 rounded-full blur-[140px] -z-10 animate-pulse" />
+        <div className="absolute bottom-0 -right-64 w-[600px] h-[600px] bg-orange-400/10 rounded-full blur-[140px] -z-10 animate-pulse" style={{ animationDelay: '1s' }} />
       </section>
 
       {/* Featured Section */}
-      <section className="flex flex-col gap-10">
-        <div className="flex justify-between items-end">
-          <div>
-            <h2 className="text-3xl font-black tracking-tight mb-2">Featured Prompts</h2>
-            <p className="text-slate-500 dark:text-slate-400 font-medium">Top-rated prompts for daily QA workflows</p>
+      <section className="flex flex-col gap-12 px-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div className="max-w-xl">
+             <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-1 px-0 bg-insta rounded-full" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-insta">Popular Choice</span>
+             </div>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-foreground">Featured Prompts</h2>
+
+            <p className="text-lg text-muted font-medium">Top-rated prompts chosen by our active QA community for daily automation tasks.</p>
           </div>
-          <Link href="/library" className="group text-sm font-bold text-primary-600 flex items-center gap-2 hover:gap-3 transition-all">
-            View all 30 prompts <ArrowRight className="w-4 h-4" />
+          <Link href="/library" className="group px-6 py-3 rounded-2xl bg-input-bg border border-border text-sm font-black text-foreground flex items-center gap-3 hover:border-insta transition-all hover:shadow-lg">
+            View All 39 Prompts <ArrowRight className="w-4 h-4 text-insta group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredPrompts.map((p) => (
             <PromptCard key={p.id} prompt={p} />
           ))}
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-12 px-6 rounded-3xl bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div className="flex flex-col gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-primary-600">
-            <Zap className="w-6 h-6" />
+      {/* Modern Features Grid */}
+      <section className="py-20 px-4">
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[
+              { icon: Zap, title: 'Instant Quality', desc: 'Standardize your POM and network interception patterns across the entire engineering team in seconds.' },
+              { icon: Terminal, title: 'Copilot Native', desc: 'Every prompt is hand-crafted to provide the perfect context for GitHub Copilot in VS Code or JetBrains.' },
+              { icon: Layout, title: 'Clean Architecture', desc: 'Avoid flakiness and technical debt with battle-tested patterns developed by senior automation leads.' }
+            ].map((feature, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ y: -8 }}
+                className="glass-card p-10 rounded-[2.5rem] border-border/40 flex flex-col gap-6"
+              >
+                <div className="w-16 h-16 rounded-3xl bg-insta flex items-center justify-center text-white shadow-xl shadow-orange-500/20">
+                  <feature.icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-black tracking-tight text-foreground">{feature.title}</h3>
+                <p className="text-base text-muted font-bold leading-relaxed">{feature.desc}</p>
+              </motion.div>
+            ))}
+         </div>
+      </section>
+
+      {/* Beginner Section with Gradient Wrapper */}
+      <section className="relative px-4 py-20 overflow-hidden">
+        <div className="flex flex-col gap-12 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div className="max-w-xl">
+               <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-1 px-0 bg-insta rounded-full" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-insta">Easy Access</span>
+               </div>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-foreground">New to Playwright?</h2>
+              <p className="text-lg text-muted font-bold leading-relaxed">Kickstart your automation journey with these simple, high-impact prompts for beginners.</p>
+            </div>
+            <Link href="/library?diff=Beginner" className="group px-6 py-3 rounded-2xl bg-input-bg border border-border text-sm font-black text-foreground flex items-center gap-3 hover:border-insta transition-all hover:shadow-lg">
+              Browse Beginner <ArrowRight className="w-4 h-4 text-insta group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
-          <h3 className="text-xl font-bold">Standardized Automation</h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Ensure every developer in your team writes Playwright tests using the same patterns, from POM to network interception.</p>
-        </div>
-        <div className="flex flex-col gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-primary-600">
-            <Terminal className="w-6 h-6" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {beginnerPrompts.map((p) => (
+              <PromptCard key={p.id} prompt={p} />
+            ))}
           </div>
-          <h3 className="text-xl font-bold">Copilot Ready</h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Every prompt is optimized for GitHub Copilot. Just paste as a comment and watch the magic happen.</p>
-        </div>
-        <div className="flex flex-col gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center text-primary-600">
-            <CheckCircle2 className="w-6 h-6" />
-          </div>
-          <h3 className="text-xl font-bold">Battle-Tested Patterns</h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Curated by senior automation experts to follow industry best practices and avoid common flakiness.</p>
         </div>
       </section>
 
-      {/* Beginner Friendly */}
-      <section className="flex flex-col gap-10">
-        <div className="flex justify-between items-end">
-          <div>
-            <h2 className="text-3xl font-black tracking-tight mb-2">New to Playwright?</h2>
-            <p className="text-slate-500 dark:text-slate-400 font-medium">Start with these beginner-friendly prompts</p>
-          </div>
-          <Link href="/library?diff=Beginner" className="group text-sm font-bold text-primary-600 flex items-center gap-2 hover:gap-3 transition-all">
-            Browse Beginner <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {beginnerPrompts.map((p) => (
-            <PromptCard key={p.id} prompt={p} />
-          ))}
-        </div>
-      </section>
-
-       {/* Quick Workflow Guide */}
-       <section className="py-20 flex flex-col items-center">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black tracking-tight mb-4">Integrated Workflow</h2>
-            <p className="text-slate-500 dark:text-slate-400 max-w-xl mx-auto font-medium">From library to production in 4 simple steps.</p>
+       {/* Ultimate Workflow Guide */}
+       <section className="py-24 flex flex-col items-center px-4">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6 text-foreground">Optimized Workflow</h2>
+            <p className="text-xl text-muted max-w-2xl mx-auto font-black italic">Deliver premium automation in four simple steps.</p>
           </div>
           
-          <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+          <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-4 gap-6 relative">
             {[
-              { step: '01', title: 'Find Prompt', desc: 'Browse the library for your specific use case.' },
-              { step: '02', title: 'Copy to VS Code', desc: 'Paste the prompt as a comment in your spec file.' },
-              { step: '03', title: 'Copilot Magic', desc: 'Let GitHub Copilot generate the test code.' },
-              { step: '04', title: 'Run & Commit', desc: 'Verify the test and push your changes.' }
+              { step: '01', title: 'Find', desc: 'Browse the library for your exact test scenario.' },
+              { step: '02', title: 'Config', desc: 'Paste the prompt and configure optional variables.' },
+              { step: '03', title: 'Magic', desc: 'Let GitHub Copilot generate the implementation.' },
+              { step: '04', title: 'Push', desc: 'Verify, run, and commit with confidence.' }
             ].map((item, idx) => (
-              <div key={item.step} className="glass-card p-6 rounded-3xl border-border flex flex-col items-center text-center group hover:border-primary-400 transition-colors">
-                <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary-600 font-black text-xs mb-4">{item.step}</div>
-                <h4 className="text-lg font-bold mb-2">{item.title}</h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
-              </div>
+              <motion.div 
+                key={item.step} 
+                whileHover={{ scale: 1.02 }}
+                className="glass-card p-10 rounded-[2.5rem] border-border/40 flex flex-col items-start gap-6 group hover:translate-y-[-4px] transition-all duration-300"
+              >
+                <div className="text-5xl font-black tracking-tighter text-insta opacity-10 group-hover:opacity-100 transition-opacity duration-500">
+                  {item.step}
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black mb-3 tracking-tight text-foreground">{item.title}</h4>
+                  <p className="text-base text-muted font-bold leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
        </section>
+
     </div>
   );
 }

@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import promptsData from '@/data/prompts.json';
 import PromptCard from '@/components/PromptCard';
-import { Search, Filter, Tag, Zap, X, AlertCircle } from 'lucide-react';
+import { Search, Filter, Zap, X, AlertCircle, LayoutGrid } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 
-export default function Library() {
+function LibraryContent() {
   const searchParams = useSearchParams();
   const catParam = searchParams.get('cat');
   const diffParam = searchParams.get('diff');
@@ -36,48 +36,52 @@ export default function Library() {
   }, [search, selectedCategory, selectedDifficulty]);
 
   return (
-    <div className="flex flex-col gap-12">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-border pb-12">
+    <div className="flex flex-col gap-16">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 border-b border-border pb-16">
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-black tracking-tight mb-4">Prompt <span className="text-primary-600">Library</span></h1>
-          <p className="text-slate-500 dark:text-slate-400 font-medium text-lg leading-relaxed">
-            Browse our full collection of {promptsData.length} optimized Playwright prompts. Filter by complexity or automation use case.
+          <div className="flex items-center gap-2 mb-4">
+             <LayoutGrid className="w-5 h-5 text-insta" />
+             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-insta">Collection</span>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6 text-foreground">Prompt <span className="text-insta">Library</span></h1>
+          <p className="text-xl text-muted font-medium leading-relaxed">
+            Browse our full collection of <span className="text-foreground font-bold">{promptsData.length} optimized</span> Playwright prompts. Filter by complexity or automation use case.
           </p>
         </div>
         
-        <div className="w-full md:w-auto flex flex-col items-end gap-2">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mr-1">Quick Search</span>
-            <div className="relative w-full md:w-72 group">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-600 transition-colors" />
+        <div className="w-full md:w-auto flex flex-col items-start md:items-end gap-3">
+            <span className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Quick Search</span>
+            <div className="relative w-full md:w-80 group">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-muted group-focus-within:text-insta transition-colors" />
               <input 
                 type="text" 
                 placeholder="Search prompts, tags..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary-600/20 focus:border-primary-600 transition-all text-sm font-medium"
+                className="w-full pl-12 pr-12 py-4 rounded-[1.5rem] bg-input-bg border border-border focus:ring-2 focus:ring-insta/20 focus:border-insta transition-all text-sm font-bold placeholder:text-muted/50"
               />
               {search && (
-                 <button onClick={() => setSearch('')} className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
-                    <X className="w-3.5 h-3.5" />
+                 <button onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 hover:bg-white dark:hover:bg-white/10 rounded-xl transition-colors">
+                    <X className="w-4 h-4 text-muted" />
                  </button>
               )}
             </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
         {/* Sidebar Filters */}
-        <aside className="lg:col-span-1 flex flex-col gap-8">
+        <aside className="lg:col-span-1 flex flex-col gap-10">
            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 flex items-center gap-2">
-                <Filter className="w-3.5 h-3.5" /> Categories
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted mb-6 flex items-center gap-3">
+                <Filter className="w-4 h-4 text-insta" /> Categories
               </h3>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-2">
                 {categories.map(cat => (
                   <button 
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`text-sm px-4 py-2.5 rounded-xl text-left transition-all font-semibold ${selectedCategory === cat ? 'bg-primary-600 text-white shadow-xl shadow-primary-600/10' : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'}`}
+                    className={`text-sm px-5 py-3 rounded-2xl text-left transition-all font-black uppercase tracking-wider ${selectedCategory === cat ? 'bg-insta text-white shadow-xl shadow-orange-500/20' : 'hover:bg-input-bg text-muted hover:text-foreground border border-transparent hover:border-border'}`}
                   >
                     {cat}
                   </button>
@@ -86,15 +90,15 @@ export default function Library() {
            </div>
 
            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 flex items-center gap-2">
-                 <Zap className="w-3.5 h-3.5" /> Difficulty
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted mb-6 flex items-center gap-3">
+                 <Zap className="w-4 h-4 text-insta" /> Difficulty
               </h3>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-2">
                 {difficulties.map(diff => (
                   <button 
                     key={diff}
                     onClick={() => setSelectedDifficulty(diff)}
-                    className={`text-sm px-4 py-2.5 rounded-xl text-left transition-all font-semibold ${selectedDifficulty === diff ? 'bg-primary-600 text-white shadow-xl shadow-primary-600/10' : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'}`}
+                    className={`text-sm px-5 py-3 rounded-2xl text-left transition-all font-black uppercase tracking-wider ${selectedDifficulty === diff ? 'bg-insta text-white shadow-xl shadow-orange-500/20' : 'hover:bg-input-bg text-muted hover:text-foreground border border-transparent hover:border-border'}`}
                   >
                     {diff}
                   </button>
@@ -104,13 +108,13 @@ export default function Library() {
         </aside>
 
         {/* Prompts Grid */}
-        <div className="lg:col-span-3 flex flex-col gap-8">
-           <div className="flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest bg-slate-100 dark:bg-slate-900 px-6 py-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <div className="lg:col-span-3 flex flex-col gap-10">
+           <div className="flex items-center justify-between text-[10px] font-black text-muted uppercase tracking-[0.2em] bg-input-bg px-8 py-4 rounded-[1.5rem] border border-border">
              <span>Showing {filteredPrompts.length} Prompts</span>
              { (search || selectedCategory !== 'All' || selectedDifficulty !== 'All') && (
                <button 
                 onClick={() => { setSearch(''); setSelectedCategory('All'); setSelectedDifficulty('All'); }}
-                className="text-primary-600 hover:text-primary-700 underline underline-offset-4"
+                className="text-insta hover:underline underline-offset-4 font-black"
                >
                  Clear all filters
                </button>
@@ -118,26 +122,43 @@ export default function Library() {
            </div>
 
            {filteredPrompts.length > 0 ? (
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                {filteredPrompts.map(prompt => (
                  <PromptCard key={prompt.id} prompt={prompt} />
                ))}
              </div>
            ) : (
-             <div className="flex flex-col items-center justify-center p-20 glass-card rounded-3xl border-dashed border-2 border-slate-200 dark:border-slate-800 text-center gap-4">
-                <AlertCircle className="w-10 h-10 text-slate-300 mx-auto" />
-                <h3 className="text-xl font-bold">No prompts found</h3>
-                <p className="text-slate-500 dark:text-slate-400 max-w-sm mx-auto font-medium">Try adjusting your filters or search query to find what you are looking for.</p>
+             <div className="flex flex-col items-center justify-center p-20 glass-card rounded-[3rem] border-dashed border-2 border-border text-center gap-6">
+                <div className="w-20 h-20 rounded-full bg-input-bg flex items-center justify-center border border-border">
+                  <AlertCircle className="w-10 h-10 text-muted" />
+                </div>
+                <div className="max-w-sm">
+                  <h3 className="text-2xl font-black mb-2 uppercase tracking-tight text-foreground">No prompts found</h3>
+                  <p className="text-base text-muted font-bold leading-relaxed">Try adjusting your filters or search query to find what you are looking for.</p>
+                </div>
                 <button 
                    onClick={() => { setSearch(''); setSelectedCategory('All'); setSelectedDifficulty('All'); }}
-                   className="mt-2 px-6 py-3 rounded-xl bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-bold text-sm"
+                   className="mt-2 px-8 py-3.5 rounded-2xl bg-insta text-white font-black text-sm uppercase tracking-widest shadow-xl shadow-orange-500/20 active:scale-95 transition-all"
                 >
-                  Reset all
+                  Reset all filters
                 </button>
              </div>
            )}
         </div>
+
       </div>
     </div>
+  );
+}
+
+export default function Library() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-[50vh]">
+        <div className="w-12 h-12 border-4 border-insta border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <LibraryContent />
+    </Suspense>
   );
 }
