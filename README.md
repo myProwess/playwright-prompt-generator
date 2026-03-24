@@ -4,6 +4,8 @@
 ![Stack: Next.js 16](https://img.shields.io/badge/Stack-Next.js%2016-black.svg)
 ![UI: Tailwind CSS 4](https://img.shields.io/badge/UI-Tailwind%20CSS%204-blue.svg)
 
+### 🚀 [Live Demo](https://myprowess.github.io/playwright-prompt-generator/)
+
 ## 🏢 The Virtual Storefront for Modern QA Automation
 
 Playwright Prompt Library is a high-performance, developer-centric "virtual bookstore" for test automation engineers. Built on the cutting-edge Next.js 16 stack, it provides an expertly curated repository of **171+ battle-tested Playwright prompts** designed specifically to feed GitHub Copilot. Stop writing repetitive boilerplate and start generating production-grade test suites in seconds by using standardized, proven automation patterns.
