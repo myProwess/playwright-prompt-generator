@@ -6,7 +6,7 @@ import { Terminal, Moon, Sun, LayoutDashboard, Compass } from 'lucide-react';
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
     // Check initial preference from document class if available
