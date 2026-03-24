@@ -1,51 +1,114 @@
-# Playwright Copilot - Prompt Library
+# Playwright Prompt Library
 
-The fastest way for QA engineers to generate high-quality Playwright tests using GitHub Copilot. This application provides a curated library of battle-tested prompts designed for real-world scenarios.
+![License: ISC](https://img.shields.io/badge/License-ISC-orange.svg) 
+![Stack: Next.js 16](https://img.shields.io/badge/Stack-Next.js%2016-black.svg)
+![UI: Tailwind CSS 4](https://img.shields.io/badge/UI-Tailwind%20CSS%204-blue.svg)
 
-## Features
+## 🏢 The Virtual Storefront for Modern QA Automation
 
-- **30+ Expert Prompts:** Specialized in login, e-commerce, API, and advanced network interception.
-- **Dynamic Variable Replacement:** Configure your URLs and selectors directly in the UI.
-- **Copilot Optimized:** Prompts formatted specifically for GitHub Copilot's best performance.
-- **Best Practices Guide:** Learn the industry standards for non-flaky automation.
-- **Starter Templates:** Quick-start config, POM, and API test files.
-- **Dark/Light Mode:** Aesthetic, premium developer-focused UI.
+Playwright Prompt Library is a high-performance, developer-centric "virtual bookstore" for test automation engineers. Built on the cutting-edge Next.js 16 stack, it provides an expertly curated repository of **171+ battle-tested Playwright prompts** designed specifically to feed GitHub Copilot. Stop writing repetitive boilerplate and start generating production-grade test suites in seconds by using standardized, proven automation patterns.
 
-## Tech Stack
+---
 
-- **Framework:** Next.js (App Router, Static Export)
-- **Styling:** Tailwind CSS (Premium glassmorphism design)
-- **Icons:** Lucide React
-- **Animations:** Framer Motion
+## 🏗️ Architecture & Technology Stack
 
-## Getting Started
+The project is designed with a **Static Site Generation (SSG)** architecture, ensuring near-instant load times and zero-latency searching across nearly two-hundred data entries.
 
-1.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+- **Frontend Core**: [Next.js 16 (App Router)](https://nextjs.org/) utilizing the high-speed **Turbopack** compiler.
+- **Styling Engine**: [Tailwind CSS 4](https://tailwindcss.com/) with a custom premium design system featuring glassmorphism and high-contrast typography.
+- **Interactions**: [Framer Motion](https://www.framer.com/motion/) for fluid, professional micro-animations.
+- **Iconography**: [Lucide React](https://lucide.dev/) for a clean, consistent visual language.
+- **Data Architecture**: Decentralized JSON datasources (`prompts.json` & `enterprise_prompts.json`) integrated at build-time for maximum performance.
 
-2.  **Run development server:**
-    ```bash
-    npm run dev
-    ```
+---
 
-3.  **Build and Export:**
-    ```bash
-    npm run build
-    ```
+## 📸 Visual Overview
 
-## Project Structure
+### Main Dashboard
+*(Preview of the high-contrast orange identity and simplified navigation)*
+![Dashboard Placeholder](https://via.placeholder.com/1200x630/FFFFFF/EA580C?text=Playwright+Library+Dashboard)
 
-- `app/`: Main application pages and layout.
-- `components/`: Reusable premium UI components.
-- `data/prompts.json`: The core library with all 30+ prompts.
-- `tailwind.config.ts`: Custom theme and color tokens.
+### Prompt Exploration
+*(The streamlined library view with 171+ unique automation scenarios)*
+![Library Placeholder](https://via.placeholder.com/1200x630/FFFFFF/EA580C?text=171+Expert+Prompts+Overview)
 
-## How to use with GitHub Copilot
+---
 
-1.  Browse the library and configure your prompt.
-2.  Click **"For Copilot"** to copy the comment-ready version.
-3.  Paste into your Playwright spec file in VS Code.
-4.  Press **Enter** and let Copilot generate the code.
-5.  Press **Tab** to accept and refine as needed.
+## 🛠️ Installation & Setup
+
+Ensure you have **Node.js 18+** installed on your system before proceeding.
+
+### 1. Clone & Install
+```bash
+git clone https://github.com/myProwess/playwright-prompt-generator.git
+cd playwright-prompt-generator
+npm install
+```
+
+### 2. Local Development
+Start the Turbopack-powered development server:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
+
+### 3. Production Build
+Generate an optimized static export:
+```bash
+npm run build
+```
+The static files will be generated in the `.next` and `out` directories.
+
+---
+
+## 🚀 Usage Examples
+
+### Using the "Copy-to-Clipboard" Workflow
+1. **Find**: Navigate to the [Library](http://localhost:3000/library) and use the search bar to find a scenario (e.g., "Login Robustness").
+2. **Copy**: Click the **"Copy Prompt"** button on the card or the detail page.
+3. **Generate**: Paste the copied text as a comment in your `.spec.ts` file:
+
+```typescript
+// Copied Prompt:
+// Generate a Playwright ui test for a login application handling 
+// robust waits, network synchronization, and production-grade stability.
+
+/* ENTER and let GitHub Copilot do the rest! */
+```
+
+---
+
+## 📂 Directory Structure
+
+```text
+.
+├── app/                 # Next.js App Router (Layouts, Pages, Styles)
+├── components/          # Premium React components (Common UI, Navbar, Footer)
+├── data/                # Core Data Sources
+│   ├── prompts.json     # Standard open-source prompt entries
+│   └── enterprise_prompts.json # 150+ Advanced enterprise automation scenarios
+├── public/              # Static assets and media
+├── tailwind.config.ts   # Design system tokens and orange branding
+└── next.config.ts       # Framework configuration
+```
+
+---
+
+## 🤝 Contribution & License
+
+### Contributing
+We welcome contributions that improve the quality of our prompt library or the UI experience.
+1. Fork the Project.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the Branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+### License
+Distributed under the **ISC License**. See `package.json` for details.
+
+---
+
+<p align="center">
+  <b>Built for Modern QA Engineers • Powered by Next.js</b>
+</p>
