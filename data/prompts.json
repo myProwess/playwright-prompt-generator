@@ -1,860 +1,149 @@
 [
   {
-    "id": "playwright-pom-basic",
-    "title": "Basic Page Object Model (POM) Structure",
-    "category": "POM & Structure",
-    "difficulty": "Intermediate",
-    "tags": [
-      "POM",
-      "Best Practices",
-      "Setup"
-    ],
-    "use_case": "Standardizing test architecture by separating selectors from test logic.",
-    "prompt": "Generate a Playwright Page Object Model class in TypeScript for the {{page_name}} page. Include a constructor with the page reference, and methods for {{action_1}} and {{action_2}} with appropriate selectors.",
-    "copilot_prompt": "// Playwright: Create a POM class for {{page_name}} with actions {{action_1}} and {{action_2}}.",
-    "template_variables": [
-      "page_name",
-      "action_1",
-      "action_2"
-    ],
-    "explanation": "Using POM makes tests more maintainable and readable. If a selector changes, you only update it in one place.",
-    "guidance": "Create a new file in tests/pages/{{page_name}}.page.ts and use this prompt to generate the class structure.",
-    "before": "test('login', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('#user', 'admin');\n  await page.click('#submit');\n});",
-    "after": "export class LoginPage {\n  constructor(private page: Page) {}\n  async login(user: string) {\n    await this.page.goto('/login');\n    await this.page.fill('#user', user);\n    await this.page.click('#submit');\n  }\n}",
-    "example_output": "import { Page } from '@playwright/test';\n\nexport class LoginPage {\n  readonly page: Page;\n  readonly usernameInput = '#username';\n  readonly loginButton = 'button[type=\"submit\"]';\n\n  constructor(page: Page) {\n    this.page = page;\n  }\n\n  async navigate() { await this.page.goto('/login'); }\n  async login(user: string) {\n    await this.page.fill(this.usernameInput, user);\n    await this.page.click(this.loginButton);\n  }\n}"
+    "id": "ui-login-robust",
+    "title": "Robust Login with Assertions",
+    "category": "UI",
+    "prompt": "Generate a Playwright test that performs login with proper waits, handles loading states, avoids hard waits, and validates dashboard visibility using expect assertions.",
+    "example": "await page.goto('/login'); await page.fill('#username','admin'); await page.fill('#password','password'); await page.click('#login'); await page.waitForURL('**/dashboard'); await expect(page.locator('#dashboard')).toBeVisible();"
   },
   {
-    "id": "playwright-login-standard",
-    "title": "Standard User Login Flow",
-    "category": "Login Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "Login",
-      "Auth",
-      "End-to-End"
-    ],
-    "use_case": "Validating the basic authentication flow in a web application.",
-    "prompt": "Write a Playwright test script that navigates to {{login_url}}, fills in the email address {{user_email}} and password, clicks the login button, and asserts that the user is redirected to the dashboard.",
-    "copilot_prompt": "// Playwright: Generate a basic login test for {{login_url}} with user {{user_email}}.",
-    "template_variables": [
-      "login_url",
-      "user_email"
-    ],
-    "explanation": "Login is the most critical path for most apps. This prompt ensures you cover the redirection as well as simple authentication.",
-    "guidance": "Paste this as a comment above a new test block and let Copilot generate the code.",
-    "before": "// Manual test script creation for login...",
-    "after": "test('should login successfully', async ({ page }) => {\n  await page.goto('https://example.com/login');\n  await page.getByLabel('Email').fill('user@example.com');\n  await page.getByLabel('Password').fill('password123');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/.*dashboard/);\n});",
-    "example_output": "import { test, expect } from '@playwright/test';\n\ntest('login flow', async ({ page }) => {\n  await page.goto('https://example.com/login');\n  await page.fill('input[name=\"email\"]', 'test@example.com');\n  await page.fill('input[name=\"password\"]', 'securePass');\n  await page.click('button#login');\n  await expect(page).toHaveURL('https://example.com/dashboard');\n});"
+    "id": "ui-login-error-validation",
+    "title": "Login Error Handling",
+    "category": "UI",
+    "prompt": "Generate a Playwright test that performs login with invalid credentials and validates error message visibility with retry-safe assertions.",
+    "example": "await page.fill('#username','wrong'); await page.fill('#password','wrong'); await page.click('#login'); await expect(page.locator('.error')).toBeVisible();"
   },
   {
-    "id": "playwright-api-get",
-    "title": "API GET Request Validation",
-    "category": "API Validation",
-    "difficulty": "Beginner",
-    "tags": [
-      "API",
-      "GET",
-      "Assertion"
-    ],
-    "use_case": "Verifying that a backend API returns correctly structured data.",
-    "prompt": "Create a Playwright API test for a GET request to {{endpoint}}. It should assert that the status code is 200 and the JSON response contains the field {{field_name}} with value {{expected_value}}.",
-    "copilot_prompt": "// Playwright: API GET test for {{endpoint}} validating {{field_name}}.",
-    "template_variables": [
-      "endpoint",
-      "field_name",
-      "expected_value"
-    ],
-    "explanation": "API tests are faster and more reliable than UI tests for validating backend logic.",
-    "guidance": "Usually used inside a file like tests/api/users.spec.ts.",
-    "before": "// No API test coverage for this endpoint...",
-    "after": "test('get status check', async ({ request }) => {\n  const response = await request.get('/api/users/1');\n  expect(response.ok()).toBeTruthy();\n  const body = await response.json();\n  expect(body.id).toBe(1);\n});",
-    "example_output": "import { test, expect } from '@playwright/test';\n\ntest('validate API endpoint', async ({ request }) => {\n  const response = await request.get('https://api.example.com/v1/user');\n  expect(response.status()).toBe(200);\n  const data = await response.json();\n  expect(data.username).toBe('johndoe');\n});"
+    "id": "ui-search-network-sync",
+    "title": "Search with Network Synchronization",
+    "category": "UI",
+    "prompt": "Generate a Playwright test that performs search and waits for API response instead of timeout, then validates all results contain search keyword.",
+    "example": "const response = page.waitForResponse(r => r.url().includes('/search')); await page.fill('#search','laptop'); await page.press('#search','Enter'); await response;"
   },
   {
-    "id": "playwright-network-mock",
-    "title": "Mocking API Endpoints",
-    "category": "Advanced Interception",
-    "difficulty": "Advanced",
-    "tags": [
-      "Mocking",
-      "Network",
-      "Resilience"
-    ],
-    "use_case": "Testing UI behavior without being dependent on a unstable or slow backend API.",
-    "prompt": "Write a Playwright script that intercepts all network requests to {{api_url}} and returns a mocked JSON body {{mock_body}}. Then navigate to {{page_url}} and verify the UI shows this mocked data.",
-    "copilot_prompt": "// Playwright: Mock API {{api_url}} with {{mock_body}} on page {{page_url}}.",
-    "template_variables": [
-      "api_url",
-      "mock_body",
-      "page_url"
-    ],
-    "explanation": "Mocking prevents flaky tests by isolating the frontend from the backend. Ideal for testing error states.",
-    "guidance": "Use this prompt within your test file before performing navigations.",
-    "before": "test('real api', async ({ page }) => { ... })",
-    "after": "await page.route('**/api/v1/status', route => route.fulfill({\n  status: 200,\n  contentType: 'application/json',\n  body: JSON.stringify({ status: 'offline' }),\n}));",
-    "example_output": "test('mocking scenario', async ({ page }) => {\n  await page.route('/api/users/1', async route => {\n    await route.fulfill({ status: 200, json: { name: 'Mocked User' } });\n  });\n  await page.goto('/profile/1');\n  await expect(page.locator('h1')).toHaveText('Mocked User');\n});"
+    "id": "ui-table-pagination-validation",
+    "title": "Table Pagination Validation",
+    "category": "UI",
+    "prompt": "Generate a Playwright test that navigates through paginated table and validates row count consistency and navigation controls.",
+    "example": "await page.click('#next'); await expect(page.locator('table tr')).toHaveCount(10);"
   },
   {
-    "id": "playwright-visual-snapshot",
-    "title": "Visual Component Snapshot",
-    "category": "Regression Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "Visual",
-      "Snapshot",
-      "UI"
-    ],
-    "use_case": "Capturing UI regressions that can't be easily caught with functional tests.",
-    "prompt": "Write a Playwright test to take a visual screenshot of the component {{selector}} on the page {{url}} and compare it against the saved baseline snapshot.",
-    "copilot_prompt": "// Playwright: Visual snapshot test for {{selector}} on {{url}}.",
-    "template_variables": [
-      "selector",
-      "url"
-    ],
-    "explanation": "Snapshot testing ensures that any visual change (CSS, layout) is flagged for review.",
-    "guidance": "Ensure you run with --update-snapshots the first time.",
-    "before": "test('ui test', async ({ page }) => {\n  await page.goto('/');\n  await expect(page.locator('#header')).toBeVisible();\n});",
-    "after": "test('visual test', async ({ page }) => {\n  await page.goto('/');\n  await expect(page.locator('#header')).toHaveScreenshot('header.png');\n});",
-    "example_output": "import { test, expect } from '@playwright/test';\n\ntest('visual regression on header', async ({ page }) => {\n  await page.goto('https://example.com');\n  const header = page.locator('header');\n  await expect(header).toHaveScreenshot('site-header.png');\n});"
+    "id": "ui-modal-stability",
+    "title": "Modal Interaction Stability",
+    "category": "UI",
+    "prompt": "Generate a Playwright test that opens modal, waits for visibility, interacts with elements, and ensures modal closes correctly.",
+    "example": "await page.click('#open-modal'); await expect(page.locator('.modal')).toBeVisible(); await page.click('.close'); await expect(page.locator('.modal')).toBeHidden();"
   },
   {
-    "id": "playwright-iframe-interaction",
-    "title": "Interacting with Iframes",
-    "category": "Advanced Interception",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Iframe",
-      "FrameLocator",
-      "Security"
-    ],
-    "use_case": "Testing third-party widgets like Stripe or PayPal payment inputs embedded within iframes.",
-    "prompt": "Generate a Playwright test to interact with an iframe with selector {{iframe_selector}}. Inside the iframe, find the input {{input_selector}} and type {{text_to_type}}.",
-    "copilot_prompt": "// Playwright: Interact with iframe {{iframe_selector}} and type in {{input_selector}}.",
-    "template_variables": [
-      "iframe_selector",
-      "input_selector",
-      "text_to_type"
-    ],
-    "explanation": "Standard selectors don't work across iframe boundaries. FrameLocators are required to bridge this gap.",
-    "guidance": "Use frameLocator() to access elements inside iframes safely.",
-    "before": "await page.fill('#card-number', '1234'); // This will fail if inside iframe!",
-    "after": "const frame = page.frameLocator('iframe#stripe-checkout');\nawait frame.locator('#card-number').fill('1234');",
-    "example_output": "test('handle iframe content', async ({ page }) => {\n  await page.goto('/checkout');\n  const creditCardFrame = page.frameLocator('#card-input-frame');\n  await creditCardFrame.locator('input[name=\"cardnumber\"]').fill('4242 4242 4242');\n  await creditCardFrame.locator('button#submit').click();\n});"
+    "id": "api-get-deep-validation",
+    "title": "API GET Deep Validation",
+    "category": "API",
+    "prompt": "Generate Playwright API test that validates status, response time, headers, and nested JSON structure.",
+    "example": "const res = await request.get('/api/user'); expect(res.status()).toBe(200); const body = await res.json(); expect(body.profile.email).toContain('@');"
   },
   {
-    "id": "playwright-drag-and-drop",
-    "title": "Drag and Drop Automation",
-    "category": "Regression Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "Interactions",
-      "Actions",
-      "DragDrop"
-    ],
-    "use_case": "Testing list reordering or Kanban board interactions.",
-    "prompt": "Write a Playwright script to drag the element {{source_selector}} and drop it into the container {{target_selector}}.",
-    "copilot_prompt": "// Playwright: Drag {{source_selector}} to {{target_selector}}.",
-    "template_variables": [
-      "source_selector",
-      "target_selector"
-    ],
-    "explanation": "Playwright provides a built-in dragTo() method that handles coordinates and mouse events automatically.",
-    "guidance": "Ensure source and target are visible before the action.",
-    "before": "await page.mouse.down({ x: 10, y: 10 }); ...",
-    "after": "await page.locator('.todo-item').first().dragTo(page.locator('.completed-list'));",
-    "example_output": "test('drag list item', async ({ page }) => {\n  await page.goto('/kanban');\n  await page.locator('#item-1').dragTo(page.locator('#column-done'));\n  await expect(page.locator('#column-done #item-1')).toBeVisible();\n});"
+    "id": "api-post-auth-validation",
+    "title": "API POST with Auth",
+    "category": "API",
+    "prompt": "Generate Playwright API POST request with bearer token and validate response body and status.",
+    "example": "await request.post('/api/data',{ headers:{Authorization:'Bearer token'}, data:{name:'test'}});"
   },
   {
-    "id": "playwright-multi-tab",
-    "title": "Handling Multiple Browser Tabs",
-    "category": "Advanced Interception",
-    "difficulty": "Advanced",
-    "tags": [
-      "Window",
-      "Popups",
-      "Async"
-    ],
-    "use_case": "Verifying links that open external documentation or OAuth flows in new tabs.",
-    "prompt": "Create a Playwright script that clicks a link {{link_selector}}, waits for the new tab to open, and then asserts the title of the new tab is {{expected_title}}.",
-    "copilot_prompt": "// Playwright: Handle click on {{link_selector}} and check popup title {{expected_title}}.",
-    "template_variables": [
-      "link_selector",
-      "expected_title"
-    ],
-    "explanation": "When a new tab opens, you must capture the page object using the context.waitForEvent('page') listener.",
-    "guidance": "Wait for the promise of the popup before clicking the link.",
-    "before": "await page.click('target=_blank');\n// Can't access the new page easily!",
-    "after": "const [newPage] = await Promise.all([\n  context.waitForEvent('page'),\n  page.click('a[target=\"_blank\"]')\n]);\nawait newPage.waitForLoadState();\nawait expect(newPage).toHaveTitle(/Docs/);",
-    "example_output": "test('handle new tab', async ({ page, context }) => {\n  const [popup] = await Promise.all([\n    context.waitForEvent('page'),\n    page.getByText('Read Docs').click(),\n  ]);\n  await popup.waitForLoadState();\n  console.log(await popup.title());\n});"
+    "id": "api-negative-validation",
+    "title": "API Negative Scenario",
+    "category": "API",
+    "prompt": "Generate Playwright API test that sends invalid payload and validates error response structure.",
+    "example": "const res = await request.post('/api',{data:{}}); expect(res.status()).toBe(400);"
   },
   {
-    "id": "playwright-mobile-emulation",
-    "title": "Mobile Emulation Setup",
-    "category": "Regression Testing",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Mobile",
-      "Config",
-      "Viewport"
-    ],
-    "use_case": "Ensuring responsive designs work correctly on iPhone/Android device viewports.",
-    "prompt": "Create a Playwright test configuration for an iPhone 13 Pro viewport. Then write a test to check if the menu toggle button is visible when navigating to {{url}}.",
-    "copilot_prompt": "// Playwright: Emulate iPhone 13 Pro for {{url}} and check mobile menu.",
-    "template_variables": [
-      "url"
-    ],
-    "explanation": "Mobile devices have different user agents and touch capability. Playwright emulates these accurately.",
-    "guidance": "Usually done via playwright.config.ts but can be done per-test using use: { ...devices['iPhone 13 Pro'] }.",
-    "before": "await page.setViewportSize({ width: 375, height: 667 });",
-    "after": "test('mobile test', async ({ page }) => {\n  await page.goto('/');\n  await expect(page.getByLabel('Menu')).toBeVisible();\n});",
-    "example_output": "import { test, expect, devices } from '@playwright/test';\n\ntest.use({ ...devices['iPhone 13 Pro'] });\n\ntest('responsive mobile check', async ({ page }) => {\n  await page.goto('https://mysite.com');\n  await page.click('.hamburger');\n  await expect(page.locator('.mobile-nav')).toBeVisible();\n});"
+    "id": "adv-network-conditional-mock",
+    "title": "Conditional API Mocking",
+    "category": "Advanced",
+    "prompt": "Generate Playwright test that mocks API responses dynamically based on query params and validates UI behavior.",
+    "example": "await page.route('**/api',route=>route.fulfill({json:{data:[]}}));"
   },
   {
-    "id": "playwright-file-upload",
-    "title": "Automated File Upload",
-    "category": "Regression Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "Upload",
-      "Files",
-      "Input"
-    ],
-    "use_case": "Testing profile picture uploads or document submission forms.",
-    "prompt": "Generate a Playwright script to upload the file located at {{file_path}} into the input element {{input_selector}}.",
-    "copilot_prompt": "// Playwright: Upload {{file_path}} to input {{input_selector}}.",
-    "template_variables": [
-      "file_path",
-      "input_selector"
-    ],
-    "explanation": "Playwright handles the file input interaction natively, even if it's hidden by CSS styling.",
-    "guidance": "Ensure the input is of type 'file'.",
-    "before": "await page.click('#upload-btn'); // How to select file from OS dialog?",
-    "after": "await page.setInputFiles('input[type=\"file\"]', 'test-data/image.png');",
-    "example_output": "test('upload profile pic', async ({ page }) => {\n  await page.goto('/settings');\n  await page.locator('input[type=\"file\"]').setInputFiles(['./uploads/myphoto.jpg']);\n  await page.click('#save');\n  await expect(page.locator('.success')).toBeVisible();\n});"
+    "id": "adv-multi-user-context",
+    "title": "Multi User Context Testing",
+    "category": "Advanced",
+    "prompt": "Generate Playwright test using two contexts to simulate two users interacting in real time.",
+    "example": "const a=await browser.newContext(); const b=await browser.newContext();"
   },
   {
-    "id": "playwright-network-throttle",
-    "title": "Network Throttling Check",
-    "category": "Performance & Network",
-    "difficulty": "Advanced",
-    "tags": [
-      "Performance",
-      "Network",
-      "Slow3G"
-    ],
-    "use_case": "Observing how the application handles slow network conditions and showing loading spinners.",
-    "prompt": "Write a Playwright script using CDPSession to simulate a Slow 3G network connection. Navigate to {{url}} and verify that the loading spinner is visible for at least {{seconds}} seconds.",
-    "copilot_prompt": "// Playwright: Simulate Slow 3G on {{url}} and check for loading spinner.",
-    "template_variables": [
-      "url",
-      "seconds"
-    ],
-    "explanation": "Simulating network conditions helps identify performance bottlenecks and UX issues in loading states.",
-    "guidance": "Requires access to context.newCDPSession(page).",
-    "before": "await page.goto(url); // Loads at full speed",
-    "after": "const client = await page.context().newCDPSession(page);\nawait client.send('Network.emulateNetworkConditions', {\n  offline: false, downloadThroughput: 50 * 1024 / 8, ...\n});",
-    "example_output": "test('simulate slow 3G', async ({ page }) => {\n  const client = await page.context().newCDPSession(page);\n  await client.send('Network.emulateNetworkConditions', {\n    offline: false,\n    downloadThroughput: 50000,\n    uploadThroughput: 10000,\n    latency: 100\n  });\n  await page.goto('/dashboard');\n  await expect(page.locator('#spinner')).toBeVisible();\n});"
+    "id": "adv-storage-state-reuse",
+    "title": "Storage State Reuse",
+    "category": "Advanced",
+    "prompt": "Generate Playwright test that loads pre-authenticated storage state and skips login.",
+    "example": "test.use({storageState:'auth.json'});"
   },
   {
-    "id": "playwright-a11y-check",
-    "title": "Accessibility (A11y) Testing",
-    "category": "Regression Testing",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Accessibility",
-      "Axe",
-      "WCAG"
-    ],
-    "use_case": "Automatically catching common accessibility violations like low contrast or missing labels.",
-    "prompt": "Write a Playwright test using '@axe-core/playwright' to run an accessibility scan on the {{page_name}} at {{url}} and assert that there are no violations.",
-    "copilot_prompt": "// Playwright: Run axe a11y scan on {{url}} and report violations.",
-    "template_variables": [
-      "page_name",
-      "url"
-    ],
-    "explanation": "Integrating accessibility checks into your CI/CD ensures that your app remains usable for everyone.",
-    "guidance": "Install @axe-core/playwright first.",
-    "before": "// No accessibility automation...",
-    "after": "import { AxeBuilder } from '@axe-core/playwright';\nconst results = await new AxeBuilder({ page }).analyze();\nexpect(results.violations).toEqual([]);",
-    "example_output": "import { test, expect } from '@playwright/test';\nimport { AxeBuilder } from '@axe-core/playwright';\n\ntest('homepage a11y', async ({ page }) => {\n  await page.goto('https://example.com');\n  const accessibilityScanResults = await new AxeBuilder({ page }).analyze();\n  expect(accessibilityScanResults.violations).toBe([]);\n});"
+    "id": "edge-timeout-handling",
+    "title": "Timeout Handling",
+    "category": "Edge",
+    "prompt": "Generate Playwright test that simulates delayed API and validates timeout UI message.",
+    "example": "await page.route('**/api', async r=>{await new Promise(f=>setTimeout(f,5000)); r.continue();});"
   },
   {
-    "id": "playwright-shadow-dom",
-    "title": "Accessing Shadow DOM Elements",
-    "category": "Advanced Interception",
-    "difficulty": "Intermediate",
-    "tags": [
-      "ShadowDOM",
-      "WebComponents",
-      "Selectors"
-    ],
-    "use_case": "Automating modern applications that use web components or micro-frontends.",
-    "prompt": "Create a Playwright test that selects an element {{selector}} located inside an open Shadow DOM root on page {{url}}.",
-    "copilot_prompt": "// Playwright: Click {{selector}} inside Shadow DOM on {{url}}.",
-    "template_variables": [
-      "selector",
-      "url"
-    ],
-    "explanation": "Playwright's default selectors pierce through Shadow DOM roots automatically, unlike Selenium or basic JS.",
-    "guidance": "Standard css selectors usually work directly, but use locator().first() if there are multiple roots.",
-    "before": "document.querySelector('host').shadowRoot.querySelector('#el');",
-    "after": "await page.locator('#element-inside-shadow').click();",
-    "example_output": "test('shadow dom interaction', async ({ page }) => {\n  await page.goto('/web-components-page');\n  // Playwright pierces shadow dom naturally\n  await page.fill('my-custom-input #inner-input', 'Hello World');\n  await expect(page.locator('my-custom-input .status')).toHaveText('Typing...');\n});"
+    "id": "edge-empty-state",
+    "title": "Empty State Validation",
+    "category": "Edge",
+    "prompt": "Generate Playwright test that validates UI behavior when API returns empty data.",
+    "example": "await expect(page.locator('.empty')).toBeVisible();"
   },
   {
-    "id": "playwright-cookie-auth",
-    "title": "Bypassing Login via Cookies",
-    "category": "Login Testing",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Auth",
-      "Cookies",
-      "Speed"
-    ],
-    "use_case": "Speeding up tests by setting valid session cookies instead of re-performing UI login every time.",
-    "prompt": "Write a Playwright script that sets a cookie {{cookie_name}} with value {{cookie_value}} for domain {{domain}} before navigating to {{url}}.",
-    "copilot_prompt": "// Playwright: Set auth cookie {{cookie_name}} for {{domain}} and go to {{url}}.",
-    "template_variables": [
-      "cookie_name",
-      "cookie_value",
-      "domain",
-      "url"
-    ],
-    "explanation": "Directly setting authentication state via cookies or localStorage is much faster than UI login.",
-    "guidance": "Use browserContext.addCookies() before navigating.",
-    "before": "test('slow login', async ({ page }) => { ... await page.login() ... })",
-    "after": "await context.addCookies([{ name: 'session', value: 'xyz', url: 'https://site.com' }]);",
-    "example_output": "test.beforeEach(async ({ context }) => {\n  await context.addCookies([{\n    name: 'auth_token',\n    value: 'secret_jwt_token',\n    domain: 'example.com',\n    path: '/',\n    httpOnly: true\n  }]);\n});"
+    "id": "ui-drag-drop-advanced",
+    "title": "Drag Drop Validation",
+    "category": "UI",
+    "prompt": "Generate Playwright script to drag and drop elements and validate final position.",
+    "example": "await page.locator('#a').dragTo(page.locator('#b'));"
   },
   {
-    "id": "playwright-global-setup",
-    "title": "Global Auth Setup",
-    "category": "POM & Structure",
-    "difficulty": "Advanced",
-    "tags": [
-      "Setup",
-      "Config",
-      "Authentication"
-    ],
-    "use_case": "Storing authentication state once to be used by hundreds of tests across the suite.",
-    "prompt": "Create a Playwright global setup file called auth.setup.ts that logs into {{url}}, saves storage state to a JSON file {{state_path}}, and can be referenced in playwright.config.ts.",
-    "copilot_prompt": "// Playwright: Create auth.setup.ts for {{url}} saving state to {{state_path}}.",
-    "template_variables": [
-      "url",
-      "state_path"
-    ],
-    "explanation": "Global Setup allows you to perform login once per run, drastically reducing overall test time.",
-    "guidance": "Configure projects in playwright.config.ts to depend on this setup.",
-    "before": "// Every test starts at the login page...",
-    "after": "setup('authenticate', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('#user', 'admin');\n  await page.click('#submit');\n  await page.context().storageState({ path: 'auth.json' });\n});",
-    "example_output": "import { test as setup } from '@playwright/test';\n\nsetup('login and save state', async ({ page }) => {\n  await page.goto('https://myapp.com/login');\n  await page.getByLabel('User').fill('admin');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await page.context().storageState({ path: 'playwright/.auth/user.json' });\n});"
+    "id": "ui-file-upload-advanced",
+    "title": "File Upload Robust",
+    "category": "UI",
+    "prompt": "Generate Playwright test for file upload with validation of success state.",
+    "example": "await page.setInputFiles('input[type=file]','file.png');"
   },
   {
-    "id": "playwright-dynamic-regex",
-    "title": "Dynamic Element Search (Regex)",
-    "category": "Advanced Interception",
-    "difficulty": "Beginner",
-    "tags": [
-      "Selectors",
-      "Regex",
-      "DynamicIDs"
-    ],
-    "use_case": "Selecting elements in frameworks like Salesforce or SAP where IDs are auto-generated and change every build.",
-    "prompt": "Generate a Playwright locator that finds a button with text matching the regular expression {{regex_pattern}} and clicks it.",
-    "copilot_prompt": "// Playwright: Click button matching regex {{regex_pattern}}.",
-    "template_variables": [
-      "regex_pattern"
-    ],
-    "explanation": "Regex selectors allow for robust automation when UI labels or classes change slightly (e.g., 'Welcome, User 123').",
-    "guidance": "Use /regex/ syntax within getByRole or getByText.",
-    "before": "await page.click('#submit-18374-unique-id'); // Fails on next deploy!",
-    "after": "await page.getByRole('button', { name: /Submit/i }).click();",
-    "example_output": "test('dynamic text match', async ({ page }) => {\n  await page.goto('/status');\n  const statusText = page.getByText(/Order #\\d+ has been placed/);\n  await expect(statusText).toBeVisible();\n});"
+    "id": "ui-file-download-validation",
+    "title": "File Download Validation",
+    "category": "UI",
+    "prompt": "Generate Playwright test to capture and validate file download event.",
+    "example": "const download = await page.waitForEvent('download');"
   },
   {
-    "id": "playwright-network-timeout",
-    "title": "Network Timeout Simulation",
-    "category": "Error Handling & Resilience",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Network",
-      "Timeout",
-      "Wait"
-    ],
-    "use_case": "Verifying that the application shows a 'Took too long' message when an API is unresponsive.",
-    "prompt": "Create a Playwright script that intercepts request {{api_url}} and delays the response by {{delay_ms}} milliseconds to simulate a timeout. Check for the error message on {{page_url}}.",
-    "copilot_prompt": "// Playwright: Delay {{api_url}} by {{delay_ms}}ms and check for timeout on {{page_url}}.",
-    "template_variables": [
-      "api_url",
-      "delay_ms",
-      "page_url"
-    ],
-    "explanation": "Timeout testing ensures your app doesn't hang indefinitely and provides good feedback to users.",
-    "guidance": "Use route.fulfill() with a delay or don't fulfill it at all.",
-    "before": "// No way to test slow API response locally...",
-    "after": "await page.route('**/api/v1/data', async route => {\n  await new Promise(res => setTimeout(res, 5000));\n  await route.continue();\n});",
-    "example_output": "test('api delay test', async ({ page }) => {\n  await page.route('**/expensive-api', async route => {\n    await new Promise(f => setTimeout(f, 60000));\n    await route.abort('timedout');\n  });\n  await page.goto('/report');\n  await expect(page.locator('.error-box')).toContainText('Request Timeout');\n});"
+    "id": "adv-network-abort",
+    "title": "Abort Third Party Calls",
+    "category": "Advanced",
+    "prompt": "Generate Playwright setup that blocks analytics and third-party scripts.",
+    "example": "await page.route(/analytics/,r=>r.abort());"
   },
   {
-    "id": "playwright-hover-tooltip",
-    "title": "Hover and Tooltip Validation",
-    "category": "Regression Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "Hover",
-      "UI",
-      "Assertions"
-    ],
-    "use_case": "Testing that helper text or tooltips appear when the user hovers over an information icon.",
-    "prompt": "Write a Playwright test to hover over element {{target_selector}} and assert that the tooltip with text {{tooltip_text}} becomes visible.",
-    "copilot_prompt": "// Playwright: Hover {{target_selector}} and check tooltip {{tooltip_text}}.",
-    "template_variables": [
-      "target_selector",
-      "tooltip_text"
-    ],
-    "explanation": "Hover actions are often overlooked but are essential for testing UX and discoverability.",
-    "guidance": "Use .hover() and then wait for the tooltip locator.",
-    "before": "await page.mouse.move(100, 100);",
-    "after": "await page.locator('.info-icon').hover();\nawait expect(page.locator('.tooltip')).toBeVisible();",
-    "example_output": "test('verify help tooltip', async ({ page }) => {\n  await page.goto('/form');\n  await page.locator('#cvv-info').hover();\n  const tooltip = page.locator('.tooltip-content');\n  await expect(tooltip).toBeVisible();\n  await expect(tooltip).toHaveText('3-digit security code');\n});"
+    "id": "ui-hover-tooltip",
+    "title": "Tooltip Validation",
+    "category": "UI",
+    "prompt": "Generate Playwright test to hover element and validate tooltip text.",
+    "example": "await page.locator('#icon').hover(); await expect(page.locator('.tooltip')).toBeVisible();"
   },
   {
-    "id": "playwright-custom-report",
-    "title": "Custom HTML Report Config",
-    "category": "POM & Structure",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Reporting",
-      "HTML",
-      "Config"
-    ],
-    "use_case": "Standardizing test reports for management or integration with CI overview.",
-    "prompt": "Generate a playwright.config.ts section that enables the HTML reporter with the option to open: 'never' and outputFolder: {{folder_name}}.",
-    "copilot_prompt": "// Playwright: Configure HTML reporter saving to {{folder_name}}.",
-    "template_variables": [
-      "folder_name"
-    ],
-    "explanation": "Good reporting helps identify why a test failed without looking at raw logs.",
-    "guidance": "Add this to the 'reporter' array in your config.",
-    "before": "reporter: 'list',",
-    "after": "reporter: [['html', { outputFolder: 'test-results/report', open: 'never' }]],",
-    "example_output": "export default defineConfig({\n  reporter: [\n    ['list'],\n    ['html', { outputFolder: 'my-reports', open: 'never' }]\n  ],\n});"
+    "id": "ui-multi-tab",
+    "title": "Multi Tab Handling",
+    "category": "UI",
+    "prompt": "Generate Playwright test that handles new tab and validates title.",
+    "example": "const [tab]=await Promise.all([context.waitForEvent('page'),page.click('#link')]);"
   },
   {
-    "id": "playwright-parallel-sharding",
-    "title": "CI Sharding and Parallelism",
-    "category": "POM & Structure",
-    "difficulty": "Advanced",
-    "tags": [
-      "CI",
-      "Performance",
-      "Optimization"
-    ],
-    "use_case": "Reducing a 2-hour test suite down to 15 minutes by running across multiple machines.",
-    "prompt": "Create a GitHub Actions workflow snippet that runs Playwright tests with sharding support: --shard={{current_shard}}/{{total_shards}}.",
-    "copilot_prompt": "// Playwright: GitHub Action shard command for {{current_shard}} of {{total_shards}}.",
-    "template_variables": [
-      "current_shard",
-      "total_shards"
-    ],
-    "explanation": "Sharding is the best way to scale large test suites in CI environments.",
-    "guidance": "Used in the matrix strategy of .github/workflows/main.yml.",
-    "before": "run: npx playwright test",
-    "after": "strategy:\n  matrix:\n    shard: [1, 2, 3, 4]\nrun: npx playwright test --shard=${{ matrix.shard }}/4",
-    "example_output": "jobs:\n  test:\n    strategy:\n      matrix:\n        shard: [1, 2, 3]\n    steps:\n      - name: Run tests\n        run: npx playwright test --shard=${{ matrix.shard }}/${{ strategy.job-total }}"
+    "id": "adv-retry-strategy",
+    "title": "Retry Strategy",
+    "category": "Advanced",
+    "prompt": "Generate Playwright test that uses retry-safe assertions and avoids flaky waits.",
+    "example": "await expect(page.locator('.status')).toHaveText('Done',{timeout:10000});"
   },
   {
-    "id": "playwright-wait-for-response",
-    "title": "Waiting for Network Response",
-    "category": "Error Handling & Resilience",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Async",
-      "Network",
-      "Wait"
-    ],
-    "use_case": "Handling slow search results where elements appear after a background fetch finishes.",
-    "prompt": "Write a Playwright script that waits for a response from {{api_pattern}} after clicking the button {{button_selector}}.",
-    "copilot_prompt": "// Playwright: Wait for {{api_pattern}} after clicking {{button_selector}}.",
-    "template_variables": [
-      "api_pattern",
-      "button_selector"
-    ],
-    "explanation": "Waiting for network events is more robust than fixed timeouts (sleep/delay).",
-    "guidance": "Use page.waitForResponse() with a filter function.",
-    "before": "await page.click('#search');\nawait page.waitForTimeout(5000); // Flaky and slow!",
-    "after": "await Promise.all([\n  page.waitForResponse(resp => resp.url().includes('/search') && resp.status() === 200),\n  page.click('#search-btn')\n]);",
-    "example_output": "test('wait for search api', async ({ page }) => {\n  await page.goto('/products');\n  const responsePromise = page.waitForResponse('**/api/search?*');\n  await page.fill('#query', 'iphone');\n  await page.press('#query', 'Enter');\n  const response = await responsePromise;\n  expect(response.ok()).toBeTruthy();\n});"
-  },
-  {
-    "id": "playwright-localstorage-set",
-    "title": "Mocking LocalStorage State",
-    "category": "Advanced Interception",
-    "difficulty": "Intermediate",
-    "tags": [
-      "LocalStorage",
-      "State",
-      "JS"
-    ],
-    "use_case": "Setting feature flags or user preferences (UI theme) without interacting with settings menus.",
-    "prompt": "Create a Playwright test script that sets a localStorage key {{key}} to {{value}} for the domain {{url}} before the page loads.",
-    "copilot_prompt": "// Playwright: Set localStorage {{key}} to {{value}} on {{url}}.",
-    "template_variables": [
-      "key",
-      "value",
-      "url"
-    ],
-    "explanation": "Many modern apps store configuration or tokens in LocalStorage. Mocking this saves interaction steps.",
-    "guidance": "Use addInitScript to ensure values are set before any application JS runs.",
-    "before": "await page.goto(url);\nawait page.evaluate(() => localStorage.setItem('k', 'v')); // Might be too late!",
-    "after": "await page.addInitScript(() => {\n  window.localStorage.setItem('theme', 'dark');\n});",
-    "example_output": "test('enable dark mode via storage', async ({ page }) => {\n  await page.addInitScript(() => {\n    localStorage.setItem('dark_mode', 'true');\n  });\n  await page.goto('https://myapp.com');\n  await expect(page.locator('body')).toHaveClass(/dark/);\n});"
-  },
-  {
-    "id": "playwright-trace-config",
-    "title": "Enable Tracing on Failure",
-    "category": "POM & Structure",
-    "difficulty": "Beginner",
-    "tags": [
-      "Debugging",
-      "Trace",
-      "Config"
-    ],
-    "use_case": "Getting 100% visibility into CI failures with videos, console logs, and network timelines.",
-    "prompt": "Generate a playwright.config.ts snippet to enable tracing: 'on-first-retry' and video: 'retain-on-failure'.",
-    "copilot_prompt": "// Playwright: Config tracing on-first-retry and video on-failure.",
-    "template_variables": [],
-    "explanation": "Traces are the 'black box' of your tests. They show exactly what happened across the network and UI.",
-    "guidance": "Add to the 'use' object in your configuration.",
-    "before": "use: { viewport: { width: 1280, height: 720 } }",
-    "after": "use: {\n  trace: 'on-first-retry',\n  video: 'retain-on-failure',\n}",
-    "example_output": "export default defineConfig({\n  use: {\n    trace: 'retain-on-failure',\n    video: 'on-first-retry',\n    screenshot: 'only-on-failure',\n  },\n});"
-  },
-  {
-    "id": "playwright-handle-dialogs",
-    "title": "Accepting Browser Alerts/Dialogs",
-    "category": "Regression Testing",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Dialogs",
-      "Alerts",
-      "Events"
-    ],
-    "use_case": "Automating legacy alerts, confirms, or prompts that block the main thread.",
-    "prompt": "Write a Playwright script that listens for a browser dialog, asserts its message is {{message}}, and clicks 'OK'.",
-    "copilot_prompt": "// Playwright: Listen for dialog with {{message}} and accept it.",
-    "template_variables": [
-      "message"
-    ],
-    "explanation": "Dialogs are modal and will hang your browser if not handled by an event listener.",
-    "guidance": "Register the listener BEFORE the action that triggers the dialog.",
-    "before": "// Test hangs when alert pops up...",
-    "after": "page.on('dialog', async dialog => {\n  expect(dialog.message()).toBe('Are you sure?');\n  await dialog.accept();\n});\nawait page.click('#delete-btn');",
-    "example_output": "test('handle alert', async ({ page }) => {\n  page.on('dialog', dialog => dialog.accept());\n  await page.goto('/demo');\n  await page.click('button#show-alert');\n  // Test continues automatically\n});"
-  },
-  {
-    "id": "playwright-multiple-contexts",
-    "title": "Multi-User Chat Testing",
-    "category": "Advanced Interception",
-    "difficulty": "Advanced",
-    "tags": [
-      "Context",
-      "MultiUser",
-      "Chat"
-    ],
-    "use_case": "Testing real-time features like chat or collaborative editing by having two separate browser sessions.",
-    "prompt": "Create a Playwright test that uses two different browser contexts to simulate User A and User B. User A sends a message {{message}} and User B verifies they received it.",
-    "copilot_prompt": "// Playwright: Two browser contexts for User A and User B chat test with {{message}}.",
-    "template_variables": [
-      "message"
-    ],
-    "explanation": "BrowserContexts are completely isolated, making them perfect for testing social or collaborative features.",
-    "guidance": "Manually create contexts instead of using the default page fixture.",
-    "before": "// One browser can only be logged in as one user...",
-    "after": "const userA = await browser.newContext();\nconst userB = await browser.newContext();\nconst pageA = await userA.newPage();\nconst pageB = await userB.newPage();",
-    "example_output": "test('chat validation', async ({ browser }) => {\n  const userA = await browser.newPage();\n  const userB = await browser.newPage();\n  await userA.goto('/chat');\n  await userB.goto('/chat');\n  await userA.fill('#msg', 'Hello!');\n  await userA.click('#send');\n  await expect(userB.locator('.message-list')).toContainText('Hello!');\n});"
-  },
-  {
-    "id": "playwright-api-post-body",
-    "title": "API POST with JSON Body",
-    "category": "API Validation",
-    "difficulty": "Intermediate",
-    "tags": [
-      "API",
-      "POST",
-      "JSON"
-    ],
-    "use_case": "Validating data creation endpoints and verifying headers.",
-    "prompt": "Create a Playwright API test that sends a POST request to {{endpoint}} with a JSON body {{json_body}} and a Bearer token {{token}}.",
-    "copilot_prompt": "// Playwright: API POST to {{endpoint}} with token {{token}} and body {{json_body}}.",
-    "template_variables": [
-      "endpoint",
-      "json_body",
-      "token"
-    ],
-    "explanation": "Verifying that your API can handle structured data and secure authentication is fundamental for QA.",
-    "guidance": "Pass headers and data objects into the request.post call.",
-    "before": "// Manual Postman check...",
-    "after": "const response = await request.post('/api/users', {\n  headers: { 'Authorization': `Bearer ${token}` },\n  data: { name: 'New User' }\n});",
-    "example_output": "test('create resource', async ({ request }) => {\n  const response = await request.post('/items', {\n    data: { id: 101, title: 'Item 1' }\n  });\n  expect(response.status()).toBe(201);\n});"
-  },
-  {
-    "id": "playwright-screenshot-fullpage",
-    "title": "Full Page Screenshot",
-    "category": "Regression Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "Snapshot",
-      "UI",
-      "Visual"
-    ],
-    "use_case": "Capturing the entire page state for documentation or manual audit after a long test run.",
-    "prompt": "Generate a Playwright command to take a full-page screenshot of {{url}} and save it as {{filename}}.",
-    "copilot_prompt": "// Playwright: Take full-page screenshot of {{url}} as {{filename}}.",
-    "template_variables": [
-      "url",
-      "filename"
-    ],
-    "explanation": "Standard screenshots only capture the viewport. Full-page snapshots are great for spotting layout shifts in footers.",
-    "guidance": "Use the fullPage: true option.",
-    "before": "await page.screenshot({ path: 'shot.png' }); // Only current window",
-    "after": "await page.screenshot({ path: 'full.png', fullPage: true });",
-    "example_output": "test('audit page', async ({ page }) => {\n  await page.goto('https://example.com/long-page');\n  await page.screenshot({ path: 'audit.png', fullPage: true });\n});"
-  },
-  {
-    "id": "playwright-wait-for-selector",
-    "title": "Waiting for Hidden Elements",
-    "category": "Error Handling & Resilience",
-    "difficulty": "Beginner",
-    "tags": [
-      "Selectors",
-      "Wait",
-      "Visibility"
-    ],
-    "use_case": "Testing dynamic loaders where an element is in the DOM but hidden until an animation finishes.",
-    "prompt": "Write a Playwright script that waits for element {{selector}} to become visible and have text {{expected_text}}.",
-    "copilot_prompt": "// Playwright: Wait for {{selector}} to be visible and show {{expected_text}}.",
-    "template_variables": [
-      "selector",
-      "expected_text"
-    ],
-    "explanation": "Explicit visibility waits are safer than relying on default timeouts when dealing with slow CSS transitions.",
-    "guidance": "Use the waitFor() method with state: 'visible'.",
-    "before": "await page.locator('.modal').click(); // Might fail if animation is running",
-    "after": "const modal = page.locator('.modal');\nawait modal.waitFor({ state: 'visible' });\nawait expect(modal).toHaveText('Done');",
-    "example_output": "test('wait for notification', async ({ page }) => {\n  await page.goto('/');\n  const toast = page.locator('.toast');\n  await toast.waitFor({ state: 'visible', timeout: 5000 });\n  await expect(toast).toContainText('Success');\n});"
-  },
-  {
-    "id": "playwright-intercept-abort",
-    "title": "Aborting Analytics Requests",
-    "category": "Advanced Interception",
-    "difficulty": "Advanced",
-    "tags": [
-      "Network",
-      "Performance",
-      "CleanTests"
-    ],
-    "use_case": "Blocking tracking scripts (Google Analytics, Segment) to speed up tests and keep production data clean.",
-    "prompt": "Create a Playwright global setup or test hook that aborts all network requests matching {{url_pattern}}.",
-    "copilot_prompt": "// Playwright: Abort all network requests matching {{url_pattern}}.",
-    "template_variables": [
-      "url_pattern"
-    ],
-    "explanation": "Aborting heavy external scripts saves bandwidth and prevents third-party services from affecting your test stability.",
-    "guidance": "Use route.abort() inside page.route().",
-    "before": "await page.goto('/'); // Loads GA, Intercom, etc.",
-    "after": "await page.route('**/*analytics*', route => route.abort());",
-    "example_output": "test.beforeEach(async ({ page }) => {\n  await page.route(/.*google-analytics\\.com.*/, route => route.abort());\n});"
-  },
-  {
-    "id": "playwright-search-results-loop",
-    "title": "Iterating Over Search Results",
-    "category": "E-commerce Flows",
-    "difficulty": "Intermediate",
-    "tags": [
-      "Loops",
-      "Lists",
-      "Assertions"
-    ],
-    "use_case": "Verifying that every product in a result list contains the keyword the user searched for.",
-    "prompt": "Generate a Playwright script that finds all elements matching {{item_selector}}, loops through them, and asserts each contains the text {{keyword}}.",
-    "copilot_prompt": "// Playwright: Loop through {{item_selector}} and assert text {{keyword}} on each.",
-    "template_variables": [
-      "item_selector",
-      "keyword"
-    ],
-    "explanation": "Validating bulk data in the UI ensures that filters and search logic are working correctly across all results.",
-    "guidance": "Use .all() and a for-of loop to handle async/await correctly.",
-    "before": "expect(await page.textContent('.items')).toContain('Phone');",
-    "after": "const items = await page.locator('.product-title').all();\nfor (const item of items) {\n  await expect(item).toContainText('iPhone');\n}",
-    "example_output": "test('verify search results', async ({ page }) => {\n  await page.goto('/search?q=laptop');\n  const titles = await page.locator('.product-card h3').all();\n  for (const title of titles) {\n    await expect(title).toContainText(/laptop/i);\n  }\n});"
-  },
-  {
-    "id": "login-valid",
-    "title": "Valid Login Test",
-    "category": "Login Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "login",
-      "smoke"
-    ],
-    "use_case": "Validate successful login with valid credentials.",
-    "prompt": "Generate a Playwright test for login using valid credentials and verify navigation to dashboard.",
-    "copilot_prompt": "// Playwright: Test valid login and verify dashboard navigation",
-    "template_variables": [],
-    "explanation": "This ensures that the happy path login scenario works correctly.",
-    "guidance": "Add this test in login.spec.ts and update selectors based on your app.",
-    "before": "test('login', async ({ page }) => {\n  await page.goto('/login');\n});",
-    "after": "await expect(page).toHaveURL('/dashboard');",
-    "example_output": "await page.goto('/login');\nawait page.fill('#username','user');\nawait page.fill('#password','pass');\nawait page.click('#login');\nawait expect(page).toHaveURL('/dashboard');"
-  },
-  {
-    "id": "login-invalid",
-    "title": "Invalid Login Test",
-    "category": "Login Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "login",
-      "negative"
-    ],
-    "use_case": "Validate error message when invalid credentials are used.",
-    "prompt": "Generate a Playwright test for invalid login and verify error message is displayed.",
-    "copilot_prompt": "// Playwright: Test invalid login and error message validation",
-    "template_variables": [],
-    "explanation": "Ensures system properly handles incorrect login attempts.",
-    "guidance": "Use incorrect credentials and assert error message visibility.",
-    "before": "await page.click('#login');",
-    "after": "await expect(page.locator('.error')).toBeVisible();",
-    "example_output": "await page.fill('#username','wrong');\nawait page.fill('#password','wrong');\nawait page.click('#login');\nawait expect(page.locator('.error')).toBeVisible();"
-  },
-  {
-    "id": "form-required-validation",
-    "title": "Form Required Field Validation",
-    "category": "Form Validation",
-    "difficulty": "Beginner",
-    "tags": [
-      "form",
-      "validation"
-    ],
-    "use_case": "Ensure required fields display validation errors when empty.",
-    "prompt": "Generate Playwright test to validate required fields in a form by submitting without input.",
-    "copilot_prompt": "// Playwright: Validate required form fields",
-    "template_variables": [],
-    "explanation": "Prevents users from submitting incomplete forms.",
-    "guidance": "Submit form without entering data and validate errors.",
-    "before": "await page.click('#submit');",
-    "after": "await expect(page.locator('.error')).toHaveCount(3);",
-    "example_output": "await page.goto('/signup');\nawait page.click('#submit');\nawait expect(page.locator('.error')).toHaveCount(3);"
-  },
-  {
-    "id": "dropdown-selection",
-    "title": "Dropdown Selection Test",
-    "category": "UI Testing",
-    "difficulty": "Beginner",
-    "tags": [
-      "dropdown",
-      "ui"
-    ],
-    "use_case": "Validate selecting an option from dropdown.",
-    "prompt": "Generate Playwright test to select a value from dropdown and verify selection.",
-    "copilot_prompt": "// Playwright: Dropdown selection validation",
-    "template_variables": [],
-    "explanation": "Ensures dropdown interactions function correctly.",
-    "guidance": "Use selectOption and verify selected value.",
-    "before": "",
-    "after": "await page.selectOption('#country','India');",
-    "example_output": "await page.selectOption('#country','India');\nawait expect(page.locator('#country')).toHaveValue('India');"
-  },
-  {
-    "id": "file-upload-test",
-    "title": "File Upload Test",
-    "category": "UI Testing",
-    "difficulty": "Intermediate",
-    "tags": [
-      "upload",
-      "file"
-    ],
-    "use_case": "Validate file upload functionality.",
-    "prompt": "Generate Playwright test to upload a file and verify success message.",
-    "copilot_prompt": "// Playwright: File upload validation",
-    "template_variables": [],
-    "explanation": "Ensures file uploads work as expected.",
-    "guidance": "Use setInputFiles method.",
-    "before": "",
-    "after": "await page.setInputFiles('#upload','file.pdf');",
-    "example_output": "await page.setInputFiles('#upload','test.pdf');\nawait expect(page.locator('.success')).toBeVisible();"
-  },
-  {
-    "id": "file-download-test",
-    "title": "File Download Test",
-    "category": "UI Testing",
-    "difficulty": "Intermediate",
-    "tags": [
-      "download"
-    ],
-    "use_case": "Validate file download functionality.",
-    "prompt": "Generate Playwright test to download a file and verify download event.",
-    "copilot_prompt": "// Playwright: File download validation",
-    "template_variables": [],
-    "explanation": "Ensures downloads are triggered correctly.",
-    "guidance": "Use waitForEvent('download').",
-    "before": "",
-    "after": "const download = await page.waitForEvent('download');",
-    "example_output": "const download = await page.waitForEvent('download');\nawait page.click('#download');"
-  },
-  {
-    "id": "search-functionality",
-    "title": "Search Functionality Test",
-    "category": "E-commerce Flows",
-    "difficulty": "Beginner",
-    "tags": [
-      "search"
-    ],
-    "use_case": "Validate search feature returns results.",
-    "prompt": "Generate Playwright test for search functionality and verify results are displayed.",
-    "copilot_prompt": "// Playwright: Search functionality validation",
-    "template_variables": [],
-    "explanation": "Ensures users can search for items.",
-    "guidance": "Enter keyword and validate results list.",
-    "before": "",
-    "after": "await page.fill('#search','laptop');",
-    "example_output": "await page.fill('#search','laptop');\nawait page.click('#searchBtn');\nawait expect(page.locator('.result')).toBeVisible();"
-  },
-  {
-    "id": "add-to-cart",
-    "title": "Add to Cart Test",
-    "category": "E-commerce Flows",
-    "difficulty": "Beginner",
-    "tags": [
-      "cart"
-    ],
-    "use_case": "Validate adding product to cart.",
-    "prompt": "Generate Playwright test to add a product to cart and verify cart count.",
-    "copilot_prompt": "// Playwright: Add to cart validation",
-    "template_variables": [],
-    "explanation": "Ensures cart functionality works.",
-    "guidance": "Click add to cart and validate cart badge.",
-    "before": "",
-    "after": "await page.click('#add-to-cart');",
-    "example_output": "await page.click('#add-to-cart');\nawait expect(page.locator('#cart-count')).toHaveText('1');"
-  },
-  {
-    "id": "checkout-flow",
-    "title": "Checkout Flow Test",
-    "category": "E-commerce Flows",
-    "difficulty": "Advanced",
-    "tags": [
-      "checkout",
-      "e2e"
-    ],
-    "use_case": "Validate complete checkout process.",
-    "prompt": "Generate Playwright test for full checkout flow including cart, address, and payment.",
-    "copilot_prompt": "// Playwright: Full checkout flow validation",
-    "template_variables": [],
-    "explanation": "Validates end-to-end purchase flow.",
-    "guidance": "Chain steps from cart to payment confirmation.",
-    "before": "",
-    "after": "await page.click('#checkout');",
-    "example_output": "await page.click('#cart');\nawait page.click('#checkout');\nawait page.fill('#address','Chennai');\nawait page.click('#pay');\nawait expect(page.locator('.success')).toBeVisible();"
+    "id": "edge-race-condition",
+    "title": "Race Condition Handling",
+    "category": "Edge",
+    "prompt": "Generate Playwright test that handles multiple async UI updates safely.",
+    "example": "await Promise.all([page.waitForResponse('**/api'), page.click('#load')]);"
   }
 ]

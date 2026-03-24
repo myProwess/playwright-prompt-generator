@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Terminal, Moon, Sun, Search, LayoutDashboard, Compass, BookOpen } from 'lucide-react';
+import { Terminal, Moon, Sun, LayoutDashboard, Compass } from 'lucide-react';
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -30,7 +30,7 @@ export default function Navbar() {
     <nav className="glass-header px-4 md:px-8 py-3.5 flex items-center justify-between transition-all duration-300">
       <Link href="/" className="flex items-center gap-3 group">
         <div className="bg-insta p-2.5 rounded-2xl group-hover:rotate-6 transition-all duration-500 shadow-xl shadow-orange-500/20 ring-1 ring-white/20">
-          <Terminal className="w-5.5 h- 5.5 text-white" />
+          <Terminal className="w-5.5 h-5.5 text-white" />
         </div>
         <div className="flex flex-col">
           <h1 className="text-xl font-black tracking-tight text-foreground leading-tight">Playwright <span className="text-insta">Copilot</span></h1>
@@ -46,10 +46,6 @@ export default function Navbar() {
         <Link href="/library" className="px-4 py-2 text-sm font-black rounded-xl hover:bg-white dark:hover:bg-white/10 hover:shadow-sm transition-all flex items-center gap-2">
           <Compass className="w-4 h-4 text-insta" />
           Explore Library
-        </Link>
-        <Link href="/guides" className="px-4 py-2 text-sm font-black rounded-xl hover:bg-white dark:hover:bg-white/10 hover:shadow-sm transition-all flex items-center gap-2">
-          <BookOpen className="w-4 h-4 text-insta" />
-          Guides
         </Link>
       </div>
 

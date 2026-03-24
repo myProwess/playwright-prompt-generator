@@ -1,39 +1,25 @@
 "use client";
 
-import { useState, useMemo, useEffect, Suspense } from 'react';
+import { useState, useMemo, Suspense } from 'react';
 import promptsData from '@/data/prompts.json';
 import PromptCard from '@/components/PromptCard';
-import { Search, Filter, Zap, X, AlertCircle, LayoutGrid } from 'lucide-react';
-import { useSearchParams } from 'next/navigation';
+import { Search, Filter, X, AlertCircle, LayoutGrid } from 'lucide-react';
 
 function LibraryContent() {
-  const searchParams = useSearchParams();
-  const catParam = searchParams.get('cat');
-  const diffParam = searchParams.get('diff');
-
   const [search, setSearch] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState(catParam || 'All');
-  const [selectedDifficulty, setSelectedDifficulty] = useState(diffParam || 'All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   
   const categories = useMemo(() => ['All', ...Array.from(new Set(promptsData.map(p => p.category)))], []);
-  const difficulties = ['All', 'Beginner', 'Intermediate', 'Advanced'];
-
-  useEffect(() => {
-    if (catParam) setSelectedCategory(catParam);
-    if (diffParam) setSelectedDifficulty(diffParam);
-  }, [catParam, diffParam]);
 
   const filteredPrompts = useMemo(() => {
     return promptsData.filter(p => {
       const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase()) || 
-                           p.use_case.toLowerCase().includes(search.toLowerCase()) ||
-                           p.tags.some(t => t.toLowerCase().includes(search.toLowerCase()));
+                           p.prompt.toLowerCase().includes(search.toLowerCase());
       const matchesCategory = selectedCategory === 'All' || p.category === selectedCategory;
-      const matchesDifficulty = selectedDifficulty === 'All' || p.difficulty === selectedDifficulty;
       
-      return matchesSearch && matchesCategory && matchesDifficulty;
+      return matchesSearch && matchesCategory;
     });
-  }, [search, selectedCategory, selectedDifficulty]);
+  }, [search, selectedCategory]);
 
   return (
     <div className="flex flex-col gap-16">
@@ -45,7 +31,7 @@ function LibraryContent() {
           </div>
           <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6 text-foreground">Prompt <span className="text-insta">Library</span></h1>
           <p className="text-xl text-muted font-medium leading-relaxed">
-            Browse our full collection of <span className="text-foreground font-bold">{promptsData.length} optimized</span> Playwright prompts. Filter by complexity or automation use case.
+            Browse our full collection of <span className="text-foreground font-bold">{promptsData.length} optimized</span> Playwright prompts. Filter by category to find the right one.
           </p>
         </div>
         
@@ -55,7 +41,7 @@ function LibraryContent() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-muted group-focus-within:text-insta transition-colors" />
               <input 
                 type="text" 
-                placeholder="Search prompts, tags..."
+                placeholder="Search prompts..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-12 pr-12 py-4 rounded-[1.5rem] bg-input-bg border border-border focus:ring-2 focus:ring-insta/20 focus:border-insta transition-all text-sm font-bold placeholder:text-muted/50"
@@ -88,32 +74,15 @@ function LibraryContent() {
                 ))}
               </div>
            </div>
-
-           <div>
-              <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted mb-6 flex items-center gap-3">
-                 <Zap className="w-4 h-4 text-insta" /> Difficulty
-              </h3>
-              <div className="flex flex-col gap-2">
-                {difficulties.map(diff => (
-                  <button 
-                    key={diff}
-                    onClick={() => setSelectedDifficulty(diff)}
-                    className={`text-sm px-5 py-3 rounded-2xl text-left transition-all font-black uppercase tracking-wider ${selectedDifficulty === diff ? 'bg-insta text-white shadow-xl shadow-orange-500/20' : 'hover:bg-input-bg text-muted hover:text-foreground border border-transparent hover:border-border'}`}
-                  >
-                    {diff}
-                  </button>
-                ))}
-              </div>
-           </div>
         </aside>
 
         {/* Prompts Grid */}
         <div className="lg:col-span-3 flex flex-col gap-10">
            <div className="flex items-center justify-between text-[10px] font-black text-muted uppercase tracking-[0.2em] bg-input-bg px-8 py-4 rounded-[1.5rem] border border-border">
              <span>Showing {filteredPrompts.length} Prompts</span>
-             { (search || selectedCategory !== 'All' || selectedDifficulty !== 'All') && (
+             { (search || selectedCategory !== 'All') && (
                <button 
-                onClick={() => { setSearch(''); setSelectedCategory('All'); setSelectedDifficulty('All'); }}
+                onClick={() => { setSearch(''); setSelectedCategory('All'); }}
                 className="text-insta hover:underline underline-offset-4 font-black"
                >
                  Clear all filters
@@ -137,7 +106,7 @@ function LibraryContent() {
                   <p className="text-base text-muted font-bold leading-relaxed">Try adjusting your filters or search query to find what you are looking for.</p>
                 </div>
                 <button 
-                   onClick={() => { setSearch(''); setSelectedCategory('All'); setSelectedDifficulty('All'); }}
+                   onClick={() => { setSearch(''); setSelectedCategory('All'); }}
                    className="mt-2 px-8 py-3.5 rounded-2xl bg-insta text-white font-black text-sm uppercase tracking-widest shadow-xl shadow-orange-500/20 active:scale-95 transition-all"
                 >
                   Reset all filters

@@ -1,14 +1,13 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Terminal, Zap, BookOpen, Search, CheckCircle2, ArrowRight, MousePointer2, Sparkles, Layout } from 'lucide-react';
+import { Terminal, Zap, Search, ArrowRight, Sparkles, Layout } from 'lucide-react';
 import Link from 'next/link';
 import promptsData from '@/data/prompts.json';
 import PromptCard from '@/components/PromptCard';
 
 export default function Home() {
   const featuredPrompts = promptsData.slice(0, 3);
-  const beginnerPrompts = promptsData.filter(p => p.difficulty === 'Beginner').slice(0, 3);
 
   return (
     <div className="flex flex-col gap-24 md:gap-32 pb-24">
@@ -23,7 +22,7 @@ export default function Home() {
             NEW
           </div>
           <span className="text-[11px] font-black uppercase tracking-wider text-muted flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-insta" /> Playwright 1.50+ optimized prompts
+            <Sparkles className="w-3.5 h-3.5 text-insta" /> {promptsData.length} Playwright prompts ready
           </span>
         </motion.div>
 
@@ -41,7 +40,7 @@ export default function Home() {
           transition={{ delay: 0.1 }}
           className="text-lg md:text-2xl text-muted max-w-3xl mb-14 font-black leading-relaxed"
         >
-          Stop writing repetitive boilerplate. Use our expert-curated library to generate高品质, standardized automation with <span className="text-foreground font-black">GitHub Copilot</span>.
+          Stop writing repetitive boilerplate. Use our curated prompt library to generate quality, standardized automation with <span className="text-foreground font-black">GitHub Copilot</span>.
         </motion.p>
 
         <motion.div 
@@ -56,13 +55,6 @@ export default function Home() {
           >
             Explore Library
             <Search className="w-5 h-5" />
-          </Link>
-          <Link 
-            href="/guides" 
-            className="px-10 py-5 rounded-3xl bg-input-bg border border-border hover:bg-white dark:hover:bg-white/10 font-black text-lg transition-all flex items-center gap-4 uppercase tracking-widest text-foreground"
-          >
-            How it works
-            <BookOpen className="w-5 h-5 text-insta" />
           </Link>
         </motion.div>
 
@@ -80,11 +72,10 @@ export default function Home() {
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-insta">Popular Choice</span>
              </div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-foreground">Featured Prompts</h2>
-
-            <p className="text-lg text-muted font-medium">Top-rated prompts chosen by our active QA community for daily automation tasks.</p>
+            <p className="text-lg text-muted font-medium">Top prompts from our collection for daily automation tasks.</p>
           </div>
           <Link href="/library" className="group px-6 py-3 rounded-2xl bg-input-bg border border-border text-sm font-black text-foreground flex items-center gap-3 hover:border-insta transition-all hover:shadow-lg">
-            View All 39 Prompts <ArrowRight className="w-4 h-4 text-insta group-hover:translate-x-1 transition-transform" />
+            View All {promptsData.length} Prompts <ArrowRight className="w-4 h-4 text-insta group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -98,9 +89,9 @@ export default function Home() {
       <section className="py-20 px-4">
          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { icon: Zap, title: 'Instant Quality', desc: 'Standardize your POM and network interception patterns across the entire engineering team in seconds.' },
-              { icon: Terminal, title: 'Copilot Native', desc: 'Every prompt is hand-crafted to provide the perfect context for GitHub Copilot in VS Code or JetBrains.' },
-              { icon: Layout, title: 'Clean Architecture', desc: 'Avoid flakiness and technical debt with battle-tested patterns developed by senior automation leads.' }
+              { icon: Zap, title: 'Instant Quality', desc: 'Standardize your test patterns across the entire engineering team in seconds.' },
+              { icon: Terminal, title: 'Copilot Native', desc: 'Every prompt is crafted to provide the perfect context for GitHub Copilot.' },
+              { icon: Layout, title: 'Clean Architecture', desc: 'Avoid flakiness and technical debt with battle-tested patterns.' }
             ].map((feature, i) => (
               <motion.div 
                 key={i}
@@ -117,32 +108,8 @@ export default function Home() {
          </div>
       </section>
 
-      {/* Beginner Section with Gradient Wrapper */}
-      <section className="relative px-4 py-20 overflow-hidden">
-        <div className="flex flex-col gap-12 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-            <div className="max-w-xl">
-               <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-1 px-0 bg-insta rounded-full" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-insta">Easy Access</span>
-               </div>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-foreground">New to Playwright?</h2>
-              <p className="text-lg text-muted font-bold leading-relaxed">Kickstart your automation journey with these simple, high-impact prompts for beginners.</p>
-            </div>
-            <Link href="/library?diff=Beginner" className="group px-6 py-3 rounded-2xl bg-input-bg border border-border text-sm font-black text-foreground flex items-center gap-3 hover:border-insta transition-all hover:shadow-lg">
-              Browse Beginner <ArrowRight className="w-4 h-4 text-insta group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {beginnerPrompts.map((p) => (
-              <PromptCard key={p.id} prompt={p} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-       {/* Ultimate Workflow Guide */}
-       <section className="py-24 flex flex-col items-center px-4">
+      {/* Workflow Steps */}
+      <section className="py-24 flex flex-col items-center px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6 text-foreground">Optimized Workflow</h2>
             <p className="text-xl text-muted max-w-2xl mx-auto font-black italic">Deliver premium automation in four simple steps.</p>
@@ -151,10 +118,10 @@ export default function Home() {
           <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-4 gap-6 relative">
             {[
               { step: '01', title: 'Find', desc: 'Browse the library for your exact test scenario.' },
-              { step: '02', title: 'Config', desc: 'Paste the prompt and configure optional variables.' },
-              { step: '03', title: 'Magic', desc: 'Let GitHub Copilot generate the implementation.' },
-              { step: '04', title: 'Push', desc: 'Verify, run, and commit with confidence.' }
-            ].map((item, idx) => (
+              { step: '02', title: 'Copy', desc: 'Click Copy Prompt to grab the optimized prompt.' },
+              { step: '03', title: 'Paste', desc: 'Paste into your Playwright spec file as a comment.' },
+              { step: '04', title: 'Generate', desc: 'Let Copilot generate the implementation.' }
+            ].map((item) => (
               <motion.div 
                 key={item.step} 
                 whileHover={{ scale: 1.02 }}

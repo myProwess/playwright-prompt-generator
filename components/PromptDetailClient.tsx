@@ -1,48 +1,19 @@
 "use client";
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState } from 'react';
 import promptsData from '@/data/prompts.json';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
-  Copy, Terminal, Tag, Zap, ChevronLeft, ArrowRight, 
-  Lightbulb, AlertTriangle, FileCode, CheckCircle2, 
-  Settings, Play, Send, Search, BookOpen, Sparkles,
-  X, LayoutGrid
+  Copy, ChevronLeft, ArrowRight, 
+  AlertTriangle, CheckCircle2, 
+  Search, BookOpen, FileCode,
+  LayoutGrid
 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function PromptDetailClient({ id }: { id: string }) {
   const prompt = promptsData.find(p => p.id === id);
-
-  const [variables, setVariables] = useState<Record<string, string>>({});
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'explanation' | 'usage' | 'example'>('explanation');
-
-  useEffect(() => {
-    if (prompt?.template_variables) {
-      const initialVars: Record<string, string> = {};
-      prompt.template_variables.forEach(v => initialVars[v] = '');
-      setVariables(initialVars);
-    }
-  }, [prompt]);
-
-  const finalPrompt = useMemo(() => {
-    if (!prompt) return '';
-    let text = prompt.prompt;
-    Object.entries(variables).forEach(([key, val]) => {
-      text = text.replace(new RegExp(`{{${key}}}`, 'g'), val || `{{${key}}}`);
-    });
-    return text;
-  }, [prompt, variables]);
-
-  const finalCopilotPrompt = useMemo(() => {
-    if (!prompt) return '';
-    let text = prompt.copilot_prompt;
-    Object.entries(variables).forEach(([key, val]) => {
-      text = text.replace(new RegExp(`{{${key}}}`, 'g'), val || `{{${key}}}`);
-    });
-    return text;
-  }, [prompt, variables]);
 
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
@@ -67,6 +38,16 @@ export default function PromptDetailClient({ id }: { id: string }) {
     );
   }
 
+  const getCategoryColor = (cat: string) => {
+    switch (cat) {
+      case 'UI': return 'text-sky-500 bg-sky-500/10 border-sky-500/20';
+      case 'API': return 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20';
+      case 'Advanced': return 'text-amber-500 bg-amber-500/10 border-amber-500/20';
+      case 'Edge': return 'text-rose-500 bg-rose-500/10 border-rose-500/20';
+      default: return 'text-muted bg-muted/10 border-muted/20';
+    }
+  };
+
   return (
     <div className="flex flex-col gap-12 max-w-6xl mx-auto pb-24">
       <Link href="/library" className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-muted hover:text-insta transition-all w-fit group text-foreground">
@@ -79,213 +60,59 @@ export default function PromptDetailClient({ id }: { id: string }) {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 border-b border-border pb-12">
         <div className="max-w-3xl">
            <div className="flex items-center gap-3 mb-6">
-             <span className="text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-xl bg-insta text-white shadow-lg shadow-orange-500/10">
+             <span className={`text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-xl border-2 ${getCategoryColor(prompt.category)}`}>
                {prompt.category}
-             </span>
-             <span className="text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-xl bg-input-bg text-muted border border-border">
-               {prompt.difficulty}
              </span>
            </div>
            <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 text-foreground leading-[0.9]">{prompt.title}</h1>
-           <p className="text-xl text-muted font-bold leading-relaxed">{prompt.use_case}</p>
-        </div>
-        <div className="flex flex-wrap gap-3">
-           {prompt.tags.map(tag => (
-             <span key={tag} className="text-[10px] font-black uppercase tracking-widest text-muted flex items-center gap-2 px-4 py-2 border border-border rounded-[1.2rem] bg-input-bg text-foreground">
-               <span className="w-1.5 h-1.5 rounded-full bg-insta" /> {tag}
-             </span>
-           ))}
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2 flex flex-col gap-10">
           
-          {/* Dynamic Editor */}
-          {prompt.template_variables && prompt.template_variables.length > 0 && (
-            <section className="glass-card rounded-[2.5rem] overflow-hidden border-insta/10 shadow-2xl shadow-orange-500/5">
-              <div className="px-10 py-6 border-b border-border flex items-center justify-between bg-input-bg/50">
-                <h3 className="text-xs font-black uppercase tracking-[0.3em] text-insta flex items-center gap-3">
-                   <Settings className="w-4 h-4" /> 1. Configure Template
-                </h3>
-              </div>
-              <div className="p-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-                {prompt.template_variables.map(variable => (
-                  <div key={variable} className="flex flex-col gap-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-muted">{variable.replace(/_/g, ' ')}</label>
-                    <input 
-                      type="text" 
-                      placeholder={`Enter ${variable}...`}
-                      value={variables[variable] || ''}
-                      onChange={(e) => setVariables({ ...variables, [variable]: e.target.value })}
-                      className="px-5 py-3.5 rounded-2xl border border-border bg-input-bg focus:ring-2 focus:ring-insta/20 focus:border-insta transition-all font-black text-sm placeholder:text-muted/40 text-foreground"
-                    />
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Prompt Output */}
+          {/* Prompt Section */}
           <section className="flex flex-col gap-6">
-             <div className="flex items-center justify-between px-3">
-               <h3 className="text-xs font-black uppercase tracking-[0.3em] text-muted flex items-center gap-3">
-                  <Sparkles className="w-4 h-4 text-insta" /> 2. Generate Result
-               </h3>
-               <button 
-                  onClick={() => setVariables({})} 
-                  className="text-[9px] font-black uppercase tracking-[0.2em] text-muted hover:text-insta transition-colors flex items-center gap-2"
-                >
-                  <X className="w-3 h-3" /> Reset values
-               </button>
-             </div>
-             
-             <div className="flex flex-col gap-8">
-                <div className="glass-card rounded-[2.5rem] p-10 border-border/50 relative group bg-background">
-                   <div className="absolute top-6 right-6 flex gap-2">
-                      <button 
-                        onClick={() => copyToClipboard(finalPrompt, 'main-copy')}
-                        className="p-3 rounded-2xl border border-border bg-input-bg shadow-sm hover:border-insta group/btn transition-all active:scale-95"
-                      >
-                         {copyStatus === 'main-copy' ? <CheckCircle2 className="w-5 h-5 text-insta" /> : <Copy className="w-5 h-5 text-muted group-hover/btn:text-insta transition-colors" />}
-                      </button>
-                   </div>
-                   <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-insta/60 mb-6">Final Optimized Prompt</h4>
-                   <p className="text-xl font-black leading-relaxed whitespace-pre-wrap text-foreground">{finalPrompt}</p>
+             <div className="glass-card rounded-[2.5rem] p-10 border-border/50 relative group bg-background">
+                <div className="absolute top-6 right-6 flex gap-2">
+                   <button 
+                     onClick={() => copyToClipboard(prompt.prompt, 'prompt-copy')}
+                     className="px-5 py-2.5 rounded-2xl border border-border bg-input-bg shadow-sm hover:border-insta group/btn transition-all active:scale-95 flex items-center gap-2"
+                   >
+                      {copyStatus === 'prompt-copy' ? <CheckCircle2 className="w-4 h-4 text-insta" /> : <Copy className="w-4 h-4 text-muted group-hover/btn:text-insta transition-colors" />}
+                      <span className="text-[10px] font-black uppercase tracking-widest">{copyStatus === 'prompt-copy' ? 'Copied!' : 'Copy Prompt'}</span>
+                   </button>
                 </div>
-
-                <div className="glass-card rounded-[2.5rem] p-10 border-insta/20 bg-insta text-white relative shadow-[0_20px_50px_-20px_rgba(234,88,12,0.5)] overflow-hidden group">
-                   <div className="absolute top-0 right-0 p-12 opacity-10 -rotate-12 translate-x-12 -translate-y-12 group-hover:rotate-0 transition-transform duration-1000">
-                      <Zap className="w-64 h-64" />
-                   </div>
-                   <div className="absolute top-6 right-6">
-                      <button 
-                        onClick={() => copyToClipboard(finalCopilotPrompt, 'copilot-copy')}
-                        className="px-6 py-3 rounded-[1.2rem] bg-white/20 hover:bg-white/30 backdrop-blur-xl border border-white/30 flex items-center gap-3 text-[11px] font-black uppercase tracking-widest transition-all active:scale-95"
-                      >
-                         {copyStatus === 'copilot-copy' ? <CheckCircle2 className="w-4 h-4" /> : <Terminal className="w-4 h-4" />}
-                         {copyStatus === 'copilot-copy' ? 'Copied' : 'For Copilot'}
-                      </button>
-                   </div>
-                   <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mb-6">Copilot-Ready (Comment Style)</h4>
-                   <p className="text-xl font-mono font-black leading-relaxed whitespace-pre-wrap truncate line-clamp-2 md:line-clamp-none">
-                     {finalCopilotPrompt}
-                   </p>
-                </div>
+                <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-insta/60 mb-6">Prompt</h4>
+                <p className="text-xl font-black leading-relaxed whitespace-pre-wrap text-foreground pr-32">{prompt.prompt}</p>
              </div>
           </section>
 
-          {/* Workflow Tabs */}
-          <section className="mt-12">
-             <div className="flex gap-2 p-1.5 bg-input-bg border border-border rounded-[1.8rem] mb-12 overflow-x-auto">
-                {[
-                  { id: 'explanation', icon: Lightbulb, label: 'Explanation' },
-                  { id: 'usage', icon: Send, label: 'Usage Guide' },
-                  { id: 'example', icon: FileCode, label: 'Results Example' }
-                ].map((tab) => (
-                  <button 
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id as any)}
-                    className={`flex-1 flex items-center justify-center gap-3 px-6 py-3.5 text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all rounded-[1.4rem] ${activeTab === tab.id ? 'bg-insta text-white shadow-xl shadow-orange-500/20' : 'text-muted hover:text-foreground font-black'}`}
-                  >
-                    <tab.icon className="w-4 h-4" /> {tab.label}
-                  </button>
-                ))}
-             </div>
-
-
-             <div className="min-h-[400px]">
-               <AnimatePresence mode="wait">
-                 {activeTab === 'explanation' && (
-                   <motion.div key="exp" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="flex flex-col gap-10">
-                      <div className="p-10 rounded-[2.5rem] bg-input-bg border border-border relative overflow-hidden">
-                         <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
-                            <Lightbulb className="w-32 h-32 text-insta" />
-                         </div>
-                         <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-insta mb-6 flex items-center gap-3">
-                           <Zap className="w-4 h-4" /> Why it works
-                          </h5>
-                         <p className="text-xl text-muted leading-relaxed font-bold">{prompt.explanation}</p>
-                      </div>
-                      <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted mb-6">Core Benefits</h5>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                             <div className="p-6 rounded-[1.8rem] border border-border flex items-start gap-4 hover:border-insta transition-colors">
-                                <CheckCircle2 className="w-6 h-6 text-emerald-500 mt-1 shrink-0" />
-                                <div className="text-sm font-black uppercase tracking-wider leading-relaxed">Standardized Playwright practices across teams.</div>
-                             </div>
-                             <div className="p-6 rounded-[1.8rem] border border-border flex items-start gap-4 hover:border-insta transition-colors">
-                                <CheckCircle2 className="w-6 h-6 text-emerald-500 mt-1 shrink-0" />
-                                <div className="text-sm font-black uppercase tracking-wider leading-relaxed">Reduces syntax errors and boilerplate writing.</div>
-                             </div>
-                          </div>
-                      </div>
-                   </motion.div>
-                 )}
-
-                 {activeTab === 'usage' && (
-                   <motion.div key="usage" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="flex flex-col gap-10">
-                      <div className="grid grid-cols-1 gap-6">
-                         {[
-                           { step: '01', title: 'Open VS Code', desc: 'Navigate to your test folder (e.g., tests/e2e/) and create a new .spec.ts file.' },
-                           { step: '02', title: 'Paste the Copilot Prompt', desc: 'Paste the &quot;For Copilot&quot; text as a comment at the top of your file or above a test() block.', highlight: true },
-                           { step: '03', title: 'Trigger Copilot', desc: 'Press Enter after the comment and wait for Copilot to suggest the code block. Press Tab to accept.' }
-                         ].map((item) => (
-                           <div key={item.step} className={`p-8 rounded-[2rem] border ${item.highlight ? 'border-insta bg-insta/5' : 'border-border bg-input-bg'} flex items-start gap-8`}>
-                              <div className={`w-12 h-12 rounded-2xl ${item.highlight ? 'bg-insta text-white shadow-lg shadow-pink-500/20' : 'bg-background text-muted'} flex items-center justify-center text-lg font-black shrink-0`}>
-                                {item.step}
-                              </div>
-                              <div>
-                                 <h6 className="text-xl font-black mb-2 tracking-tight">{item.title}</h6>
-                                 <p className="text-muted font-medium leading-relaxed">{item.desc}</p>
-                              </div>
-                           </div>
-                         ))}
-                      </div>
-                      <div className="p-8 rounded-[2rem] border border-insta-orange/20 bg-insta-orange/5 flex items-start gap-5">
-                         <AlertTriangle className="w-8 h-8 text-insta-orange mt-1 shrink-0" />
-                         <div className="text-base font-bold text-muted leading-relaxed">
-                           <strong className="text-insta-orange uppercase tracking-widest text-xs block mb-1">Placement is key</strong> {prompt.guidance}
-                         </div>
-                      </div>
-                   </motion.div>
-                 )}
-
-                 {activeTab === 'example' && (
-                   <motion.div key="example" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="flex flex-col gap-10">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                         <div className="flex flex-col gap-4">
-                            <h6 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted px-4">Problem (Non-standard)</h6>
-                            <div className="p-8 rounded-[2.5rem] bg-slate-900 border border-border text-slate-300 font-mono text-sm overflow-x-auto whitespace-pre">
-                               {prompt.before || '// No standardize pattern used...'}
-                            </div>
-                         </div>
-                         <div className="flex flex-col gap-4">
-                            <h6 className="text-[10px] font-black uppercase tracking-[0.3em] text-insta px-4">Solution (Optimized)</h6>
-                            <div className="p-8 rounded-[2.5rem] bg-[#0d1117] border border-insta/20 text-white font-mono text-sm overflow-x-auto whitespace-pre shadow-2xl shadow-pink-500/10">
-                               {prompt.after || '// Resulting Playwright test...'}
-                            </div>
-                         </div>
-                      </div>
-
-                      <div className="flex flex-col gap-6">
-                          <h6 className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500 px-4 flex items-center gap-3">
-                             <Play className="w-4 h-4" /> Realistic Output Preview
-                          </h6>
-                          <div className="p-12 rounded-[3.5rem] bg-slate-950 border border-border shadow-2xl overflow-hidden relative">
-                             <div className="absolute top-0 right-0 p-8 flex gap-2">
-                                <div className="w-3 h-3 rounded-full bg-slate-800" />
-                                <div className="w-3 h-3 rounded-full bg-slate-800" />
-                                <div className="w-3 h-3 rounded-full bg-slate-800" />
-                             </div>
-                             <pre className="font-mono text-base text-emerald-400/90 leading-relaxed overflow-x-auto">
-                               {prompt.example_output || '// Loading output snippet...'}
-                             </pre>
-                          </div>
-                      </div>
-                   </motion.div>
-                 )}
-               </AnimatePresence>
+          {/* Example Section */}
+          <section className="flex flex-col gap-6">
+             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted px-4 flex items-center gap-3">
+                <FileCode className="w-4 h-4 text-insta" /> Example Code
+             </h4>
+             <div className="relative">
+                <div className="absolute top-6 right-6 z-10">
+                   <button 
+                      onClick={() => copyToClipboard(prompt.example, 'example-copy')}
+                      className="px-5 py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest transition-all active:scale-95 text-white"
+                   >
+                      {copyStatus === 'example-copy' ? <CheckCircle2 className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                      {copyStatus === 'example-copy' ? 'Copied!' : 'Copy'}
+                   </button>
+                </div>
+                <div className="p-10 rounded-[2.5rem] bg-slate-950 border border-border shadow-2xl overflow-hidden relative">
+                   <div className="absolute top-0 left-0 p-6 flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-slate-800" />
+                      <div className="w-3 h-3 rounded-full bg-slate-800" />
+                      <div className="w-3 h-3 rounded-full bg-slate-800" />
+                   </div>
+                   <pre className="font-mono text-sm text-emerald-400/90 leading-relaxed overflow-x-auto whitespace-pre-wrap mt-4">
+                     {prompt.example}
+                   </pre>
+                </div>
              </div>
           </section>
         </div>
@@ -294,20 +121,27 @@ export default function PromptDetailClient({ id }: { id: string }) {
         <div className="lg:col-span-1 flex flex-col gap-10">
            <div className="glass-card p-10 rounded-[3rem] border-border sticky top-32 bg-input-bg/30">
              <h4 className="font-black text-xs uppercase tracking-[0.3em] mb-10 flex items-center gap-3 text-insta">
-                <LayoutGrid className="w-5 h-5" /> Copy Workflow
+                <LayoutGrid className="w-5 h-5" /> Quick Actions
              </h4>
              <div className="flex flex-col gap-6">
                 <button 
-                  onClick={() => copyToClipboard(JSON.stringify(prompt, null, 2), 'workflow-copy')}
+                  onClick={() => copyToClipboard(prompt.prompt, 'sidebar-prompt')}
+                  className="w-full flex items-center justify-between px-6 py-5 rounded-[1.8rem] bg-insta text-white font-black shadow-xl shadow-orange-500/20 active:scale-95 transition-all group"
+                >
+                  <span className="text-xs uppercase tracking-widest">Copy Prompt</span>
+                  {copyStatus === 'sidebar-prompt' ? <CheckCircle2 className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
+                </button>
+                <button 
+                  onClick={() => copyToClipboard(prompt.example, 'sidebar-example')}
                   className="w-full flex items-center justify-between px-6 py-5 rounded-[1.8rem] border border-border bg-background hover:border-insta hover:shadow-xl transition-all font-black group"
                 >
-                  <span className="text-xs uppercase tracking-widest">Full Data Object</span>
-                  {copyStatus === 'workflow-copy' ? <CheckCircle2 className="w-5 h-5 text-insta" /> : <ArrowRight className="w-5 h-5 text-muted group-hover:text-insta transition-all" />}
+                  <span className="text-xs uppercase tracking-widest">Copy Example</span>
+                  {copyStatus === 'sidebar-example' ? <CheckCircle2 className="w-5 h-5 text-insta" /> : <ArrowRight className="w-5 h-5 text-muted group-hover:text-insta transition-all" />}
                 </button>
                 <div className="p-8 rounded-[2rem] bg-insta/5 border border-insta/10">
                    <p className="text-[10px] font-black text-insta uppercase tracking-[0.3em] mb-4 flex items-center gap-2 underline underline-offset-4 decoration-2">PRO TIP</p>
                    <p className="text-sm text-muted font-bold leading-relaxed">
-                     Inject these prompts into your <code>.github/copilot-instructions</code> to train Copilot on your team&apos;s style.
+                     Paste this prompt as a comment in your <code>.spec.ts</code> file and let Copilot generate the test.
                    </p>
                 </div>
              </div>
@@ -319,12 +153,6 @@ export default function PromptDetailClient({ id }: { id: string }) {
                     <Search className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-black uppercase tracking-widest group-hover:text-insta transition-all">Browse Prompts</span>
-                </Link>
-                <Link href="/guides" className="group flex items-center gap-5">
-                  <div className="p-4 rounded-2xl bg-input-bg border border-border group-hover:bg-insta group-hover:text-white transition-all shadow-sm">
-                    <BookOpen className="w-5 h-5" />
-                  </div>
-                  <span className="text-xs font-black uppercase tracking-widest group-hover:text-insta transition-all">Setup Guides</span>
                 </Link>
              </div>
            </div>
