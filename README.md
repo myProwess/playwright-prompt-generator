@@ -27,12 +27,16 @@ The project is designed with a **Static Site Generation (SSG)** architecture, en
 ## 📸 Visual Overview
 
 ### Main Dashboard
-*(Preview of the high-contrast orange identity and simplified navigation)*
-![Dashboard Placeholder](https://via.placeholder.com/1200x630/FFFFFF/EA580C?text=Playwright+Library+Dashboard)
+*(Premium high-contrast orange identity and simplified navigation)*
+![Dashboard](./public/home-preview.png)
 
 ### Prompt Exploration
-*(The streamlined library view with 171+ unique automation scenarios)*
-![Library Placeholder](https://via.placeholder.com/1200x630/FFFFFF/EA580C?text=171+Expert+Prompts+Overview)
+*(Streamlined library view featuring 171+ expert automation scenarios)*
+![Library](./public/library-preview.png)
+
+### Detail View & Integration
+*(Deep-dive into prompt structure and instantaneous copy-to-clipboard functionality)*
+![Detail View](./public/detail-preview.png)
 
 ---
 
