@@ -34,7 +34,7 @@ function LibraryContent() {
           </div>
           <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6 text-foreground">Prompt <span className="text-insta">Library</span></h1>
           <p className="text-xl text-muted font-medium leading-relaxed">
-            Browse our full collection of <span className="text-foreground font-bold">{promptsData.length} optimized</span> Playwright prompts. Filter by category to find the right one.
+            Browse our full collection of <span className="text-foreground font-bold">{allPrompts.length} optimized</span> Playwright prompts. Filter by category to find the right one.
           </p>
         </div>
         
