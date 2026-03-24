@@ -1,8 +1,10 @@
 import promptsData from '@/data/prompts.json';
+import enterpriseData from '@/data/enterprise_prompts.json';
 import PromptDetailClient from '@/components/PromptDetailClient';
 
 export function generateStaticParams() {
-  return promptsData.map((prompt) => ({
+  const allPrompts = [...promptsData, ...enterpriseData];
+  return allPrompts.map((prompt) => ({
     id: prompt.id,
   }));
 }

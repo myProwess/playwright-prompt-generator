@@ -4,10 +4,13 @@ import { motion } from 'framer-motion';
 import { Terminal, Zap, Search, ArrowRight, Sparkles, Layout } from 'lucide-react';
 import Link from 'next/link';
 import promptsData from '@/data/prompts.json';
+import enterpriseData from '@/data/enterprise_prompts.json';
 import PromptCard from '@/components/PromptCard';
 
+const allPrompts = [...promptsData, ...enterpriseData];
+
 export default function Home() {
-  const featuredPrompts = promptsData.slice(0, 3);
+  const featuredPrompts = allPrompts.slice(0, 3);
 
   return (
     <div className="flex flex-col gap-24 md:gap-32 pb-24">
@@ -22,7 +25,7 @@ export default function Home() {
             NEW
           </div>
           <span className="text-[11px] font-black uppercase tracking-wider text-muted flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-insta" /> {promptsData.length} Playwright prompts ready
+            <Sparkles className="w-3.5 h-3.5 text-insta" /> {allPrompts.length} Playwright prompts ready
           </span>
         </motion.div>
 
@@ -75,7 +78,7 @@ export default function Home() {
             <p className="text-lg text-muted font-medium">Top prompts from our collection for daily automation tasks.</p>
           </div>
           <Link href="/library" className="group px-6 py-3 rounded-2xl bg-input-bg border border-border text-sm font-black text-foreground flex items-center gap-3 hover:border-insta transition-all hover:shadow-lg">
-            View All {promptsData.length} Prompts <ArrowRight className="w-4 h-4 text-insta group-hover:translate-x-1 transition-transform" />
+            View All {allPrompts.length} Prompts <ArrowRight className="w-4 h-4 text-insta group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

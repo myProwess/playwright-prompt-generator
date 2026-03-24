@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "ecommerce-ui-1",
+    "title": "E-commerce UI Scenario 1",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a e-commerce application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-ui-2",
+    "title": "E-commerce UI Scenario 2",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a e-commerce application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-ui-3",
+    "title": "E-commerce UI Scenario 3",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a e-commerce application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-ui-4",
+    "title": "E-commerce UI Scenario 4",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a e-commerce application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-ui-5",
+    "title": "E-commerce UI Scenario 5",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a e-commerce application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-ui-6",
+    "title": "E-commerce UI Scenario 6",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a e-commerce application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-api-1",
+    "title": "E-commerce API Scenario 1",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a e-commerce application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-api-2",
+    "title": "E-commerce API Scenario 2",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a e-commerce application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-api-3",
+    "title": "E-commerce API Scenario 3",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a e-commerce application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-api-4",
+    "title": "E-commerce API Scenario 4",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a e-commerce application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-api-5",
+    "title": "E-commerce API Scenario 5",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a e-commerce application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-api-6",
+    "title": "E-commerce API Scenario 6",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a e-commerce application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-advanced-1",
+    "title": "E-commerce Advanced Scenario 1",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a e-commerce application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-advanced-2",
+    "title": "E-commerce Advanced Scenario 2",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a e-commerce application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-advanced-3",
+    "title": "E-commerce Advanced Scenario 3",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a e-commerce application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-advanced-4",
+    "title": "E-commerce Advanced Scenario 4",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a e-commerce application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-advanced-5",
+    "title": "E-commerce Advanced Scenario 5",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a e-commerce application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-advanced-6",
+    "title": "E-commerce Advanced Scenario 6",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a e-commerce application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-edge-1",
+    "title": "E-commerce Edge Scenario 1",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a e-commerce application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-edge-2",
+    "title": "E-commerce Edge Scenario 2",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a e-commerce application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-edge-3",
+    "title": "E-commerce Edge Scenario 3",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a e-commerce application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-edge-4",
+    "title": "E-commerce Edge Scenario 4",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a e-commerce application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-edge-5",
+    "title": "E-commerce Edge Scenario 5",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a e-commerce application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "ecommerce-edge-6",
+    "title": "E-commerce Edge Scenario 6",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a e-commerce application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-ui-1",
+    "title": "Banking UI Scenario 1",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a banking application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-ui-2",
+    "title": "Banking UI Scenario 2",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a banking application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-ui-3",
+    "title": "Banking UI Scenario 3",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a banking application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-ui-4",
+    "title": "Banking UI Scenario 4",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a banking application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-ui-5",
+    "title": "Banking UI Scenario 5",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a banking application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-ui-6",
+    "title": "Banking UI Scenario 6",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a banking application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-api-1",
+    "title": "Banking API Scenario 1",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a banking application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-api-2",
+    "title": "Banking API Scenario 2",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a banking application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-api-3",
+    "title": "Banking API Scenario 3",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a banking application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-api-4",
+    "title": "Banking API Scenario 4",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a banking application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-api-5",
+    "title": "Banking API Scenario 5",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a banking application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-api-6",
+    "title": "Banking API Scenario 6",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a banking application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-advanced-1",
+    "title": "Banking Advanced Scenario 1",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a banking application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-advanced-2",
+    "title": "Banking Advanced Scenario 2",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a banking application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-advanced-3",
+    "title": "Banking Advanced Scenario 3",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a banking application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-advanced-4",
+    "title": "Banking Advanced Scenario 4",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a banking application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-advanced-5",
+    "title": "Banking Advanced Scenario 5",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a banking application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-advanced-6",
+    "title": "Banking Advanced Scenario 6",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a banking application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-edge-1",
+    "title": "Banking Edge Scenario 1",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a banking application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-edge-2",
+    "title": "Banking Edge Scenario 2",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a banking application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-edge-3",
+    "title": "Banking Edge Scenario 3",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a banking application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-edge-4",
+    "title": "Banking Edge Scenario 4",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a banking application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-edge-5",
+    "title": "Banking Edge Scenario 5",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a banking application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "banking-edge-6",
+    "title": "Banking Edge Scenario 6",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a banking application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-ui-1",
+    "title": "SaaS UI Scenario 1",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a saas application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-ui-2",
+    "title": "SaaS UI Scenario 2",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a saas application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-ui-3",
+    "title": "SaaS UI Scenario 3",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a saas application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-ui-4",
+    "title": "SaaS UI Scenario 4",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a saas application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-ui-5",
+    "title": "SaaS UI Scenario 5",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a saas application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-ui-6",
+    "title": "SaaS UI Scenario 6",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a saas application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-api-1",
+    "title": "SaaS API Scenario 1",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a saas application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-api-2",
+    "title": "SaaS API Scenario 2",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a saas application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-api-3",
+    "title": "SaaS API Scenario 3",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a saas application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-api-4",
+    "title": "SaaS API Scenario 4",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a saas application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-api-5",
+    "title": "SaaS API Scenario 5",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a saas application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-api-6",
+    "title": "SaaS API Scenario 6",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a saas application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-advanced-1",
+    "title": "SaaS Advanced Scenario 1",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a saas application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-advanced-2",
+    "title": "SaaS Advanced Scenario 2",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a saas application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-advanced-3",
+    "title": "SaaS Advanced Scenario 3",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a saas application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-advanced-4",
+    "title": "SaaS Advanced Scenario 4",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a saas application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-advanced-5",
+    "title": "SaaS Advanced Scenario 5",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a saas application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-advanced-6",
+    "title": "SaaS Advanced Scenario 6",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a saas application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-edge-1",
+    "title": "SaaS Edge Scenario 1",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a saas application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-edge-2",
+    "title": "SaaS Edge Scenario 2",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a saas application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-edge-3",
+    "title": "SaaS Edge Scenario 3",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a saas application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-edge-4",
+    "title": "SaaS Edge Scenario 4",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a saas application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-edge-5",
+    "title": "SaaS Edge Scenario 5",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a saas application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "saas-edge-6",
+    "title": "SaaS Edge Scenario 6",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a saas application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-ui-1",
+    "title": "Healthcare UI Scenario 1",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a healthcare application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-ui-2",
+    "title": "Healthcare UI Scenario 2",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a healthcare application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-ui-3",
+    "title": "Healthcare UI Scenario 3",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a healthcare application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-ui-4",
+    "title": "Healthcare UI Scenario 4",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a healthcare application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-ui-5",
+    "title": "Healthcare UI Scenario 5",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a healthcare application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-ui-6",
+    "title": "Healthcare UI Scenario 6",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a healthcare application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-api-1",
+    "title": "Healthcare API Scenario 1",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a healthcare application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-api-2",
+    "title": "Healthcare API Scenario 2",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a healthcare application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-api-3",
+    "title": "Healthcare API Scenario 3",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a healthcare application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-api-4",
+    "title": "Healthcare API Scenario 4",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a healthcare application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-api-5",
+    "title": "Healthcare API Scenario 5",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a healthcare application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-api-6",
+    "title": "Healthcare API Scenario 6",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a healthcare application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-advanced-1",
+    "title": "Healthcare Advanced Scenario 1",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a healthcare application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-advanced-2",
+    "title": "Healthcare Advanced Scenario 2",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a healthcare application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-advanced-3",
+    "title": "Healthcare Advanced Scenario 3",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a healthcare application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-advanced-4",
+    "title": "Healthcare Advanced Scenario 4",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a healthcare application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-advanced-5",
+    "title": "Healthcare Advanced Scenario 5",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a healthcare application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-advanced-6",
+    "title": "Healthcare Advanced Scenario 6",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a healthcare application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-edge-1",
+    "title": "Healthcare Edge Scenario 1",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a healthcare application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-edge-2",
+    "title": "Healthcare Edge Scenario 2",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a healthcare application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-edge-3",
+    "title": "Healthcare Edge Scenario 3",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a healthcare application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-edge-4",
+    "title": "Healthcare Edge Scenario 4",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a healthcare application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-edge-5",
+    "title": "Healthcare Edge Scenario 5",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a healthcare application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "healthcare-edge-6",
+    "title": "Healthcare Edge Scenario 6",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a healthcare application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-ui-1",
+    "title": "Travel UI Scenario 1",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a travel application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-ui-2",
+    "title": "Travel UI Scenario 2",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a travel application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-ui-3",
+    "title": "Travel UI Scenario 3",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a travel application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-ui-4",
+    "title": "Travel UI Scenario 4",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a travel application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-ui-5",
+    "title": "Travel UI Scenario 5",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a travel application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-ui-6",
+    "title": "Travel UI Scenario 6",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a travel application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-api-1",
+    "title": "Travel API Scenario 1",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a travel application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-api-2",
+    "title": "Travel API Scenario 2",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a travel application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-api-3",
+    "title": "Travel API Scenario 3",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a travel application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-api-4",
+    "title": "Travel API Scenario 4",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a travel application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-api-5",
+    "title": "Travel API Scenario 5",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a travel application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-api-6",
+    "title": "Travel API Scenario 6",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a travel application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-advanced-1",
+    "title": "Travel Advanced Scenario 1",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a travel application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-advanced-2",
+    "title": "Travel Advanced Scenario 2",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a travel application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-advanced-3",
+    "title": "Travel Advanced Scenario 3",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a travel application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-advanced-4",
+    "title": "Travel Advanced Scenario 4",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a travel application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-advanced-5",
+    "title": "Travel Advanced Scenario 5",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a travel application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-advanced-6",
+    "title": "Travel Advanced Scenario 6",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a travel application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-edge-1",
+    "title": "Travel Edge Scenario 1",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a travel application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-edge-2",
+    "title": "Travel Edge Scenario 2",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a travel application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-edge-3",
+    "title": "Travel Edge Scenario 3",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a travel application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-edge-4",
+    "title": "Travel Edge Scenario 4",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a travel application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-edge-5",
+    "title": "Travel Edge Scenario 5",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a travel application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "travel-edge-6",
+    "title": "Travel Edge Scenario 6",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a travel application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-ui-1",
+    "title": "Insurance UI Scenario 1",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a insurance application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-ui-2",
+    "title": "Insurance UI Scenario 2",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a insurance application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-ui-3",
+    "title": "Insurance UI Scenario 3",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a insurance application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-ui-4",
+    "title": "Insurance UI Scenario 4",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a insurance application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-ui-5",
+    "title": "Insurance UI Scenario 5",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a insurance application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-ui-6",
+    "title": "Insurance UI Scenario 6",
+    "category": "UI",
+    "prompt": "Generate a Playwright ui test for a insurance application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-api-1",
+    "title": "Insurance API Scenario 1",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a insurance application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-api-2",
+    "title": "Insurance API Scenario 2",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a insurance application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-api-3",
+    "title": "Insurance API Scenario 3",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a insurance application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-api-4",
+    "title": "Insurance API Scenario 4",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a insurance application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-api-5",
+    "title": "Insurance API Scenario 5",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a insurance application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-api-6",
+    "title": "Insurance API Scenario 6",
+    "category": "API",
+    "prompt": "Generate a Playwright api test for a insurance application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-advanced-1",
+    "title": "Insurance Advanced Scenario 1",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a insurance application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-advanced-2",
+    "title": "Insurance Advanced Scenario 2",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a insurance application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-advanced-3",
+    "title": "Insurance Advanced Scenario 3",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a insurance application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-advanced-4",
+    "title": "Insurance Advanced Scenario 4",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a insurance application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-advanced-5",
+    "title": "Insurance Advanced Scenario 5",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a insurance application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-advanced-6",
+    "title": "Insurance Advanced Scenario 6",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright advanced test for a insurance application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-edge-1",
+    "title": "Insurance Edge Scenario 1",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a insurance application handling scenario 1 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-edge-2",
+    "title": "Insurance Edge Scenario 2",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a insurance application handling scenario 2 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-edge-3",
+    "title": "Insurance Edge Scenario 3",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a insurance application handling scenario 3 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-edge-4",
+    "title": "Insurance Edge Scenario 4",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a insurance application handling scenario 4 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-edge-5",
+    "title": "Insurance Edge Scenario 5",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a insurance application handling scenario 5 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "insurance-edge-6",
+    "title": "Insurance Edge Scenario 6",
+    "category": "Edge",
+    "prompt": "Generate a Playwright edge test for a insurance application handling scenario 6 with robust waits, network synchronization, proper assertions, error handling, and production-grade stability practices. Avoid hard waits and ensure reliability in CI environments.",
+    "example": "await page.goto('/'); await expect(page.locator('body')).toBeVisible();"
+  },
+  {
+    "id": "global-advanced-145",
+    "title": "Cross Domain Advanced Scenario 145",
+    "category": "API",
+    "prompt": "Generate a Playwright test covering cross-domain enterprise workflow with multi-step validation, retries, API synchronization, and error handling without using static waits.",
+    "example": "await page.goto('/dashboard'); await expect(page.locator('#app')).toBeVisible();"
+  },
+  {
+    "id": "global-advanced-146",
+    "title": "Cross Domain Advanced Scenario 146",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright test covering cross-domain enterprise workflow with multi-step validation, retries, API synchronization, and error handling without using static waits.",
+    "example": "await page.goto('/dashboard'); await expect(page.locator('#app')).toBeVisible();"
+  },
+  {
+    "id": "global-advanced-147",
+    "title": "Cross Domain Advanced Scenario 147",
+    "category": "Edge",
+    "prompt": "Generate a Playwright test covering cross-domain enterprise workflow with multi-step validation, retries, API synchronization, and error handling without using static waits.",
+    "example": "await page.goto('/dashboard'); await expect(page.locator('#app')).toBeVisible();"
+  },
+  {
+    "id": "global-advanced-148",
+    "title": "Cross Domain Advanced Scenario 148",
+    "category": "UI",
+    "prompt": "Generate a Playwright test covering cross-domain enterprise workflow with multi-step validation, retries, API synchronization, and error handling without using static waits.",
+    "example": "await page.goto('/dashboard'); await expect(page.locator('#app')).toBeVisible();"
+  },
+  {
+    "id": "global-advanced-149",
+    "title": "Cross Domain Advanced Scenario 149",
+    "category": "API",
+    "prompt": "Generate a Playwright test covering cross-domain enterprise workflow with multi-step validation, retries, API synchronization, and error handling without using static waits.",
+    "example": "await page.goto('/dashboard'); await expect(page.locator('#app')).toBeVisible();"
+  },
+  {
+    "id": "global-advanced-150",
+    "title": "Cross Domain Advanced Scenario 150",
+    "category": "Advanced",
+    "prompt": "Generate a Playwright test covering cross-domain enterprise workflow with multi-step validation, retries, API synchronization, and error handling without using static waits.",
+    "example": "await page.goto('/dashboard'); await expect(page.locator('#app')).toBeVisible();"
+  }
+]

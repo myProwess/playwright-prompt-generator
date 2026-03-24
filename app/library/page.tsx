@@ -2,17 +2,20 @@
 
 import { useState, useMemo, Suspense } from 'react';
 import promptsData from '@/data/prompts.json';
+import enterpriseData from '@/data/enterprise_prompts.json';
 import PromptCard from '@/components/PromptCard';
 import { Search, Filter, X, AlertCircle, LayoutGrid } from 'lucide-react';
+
+const allPrompts = [...promptsData, ...enterpriseData];
 
 function LibraryContent() {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   
-  const categories = useMemo(() => ['All', ...Array.from(new Set(promptsData.map(p => p.category)))], []);
+  const categories = useMemo(() => ['All', ...Array.from(new Set(allPrompts.map(p => p.category)))], []);
 
   const filteredPrompts = useMemo(() => {
-    return promptsData.filter(p => {
+    return allPrompts.filter(p => {
       const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase()) || 
                            p.prompt.toLowerCase().includes(search.toLowerCase());
       const matchesCategory = selectedCategory === 'All' || p.category === selectedCategory;

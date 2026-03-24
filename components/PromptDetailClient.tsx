@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import promptsData from '@/data/prompts.json';
+import enterpriseData from '@/data/enterprise_prompts.json';
 import { motion } from 'framer-motion';
 import { 
   Copy, ChevronLeft, ArrowRight, 
@@ -12,7 +13,8 @@ import {
 import Link from 'next/link';
 
 export default function PromptDetailClient({ id }: { id: string }) {
-  const prompt = promptsData.find(p => p.id === id);
+  const allPrompts = [...promptsData, ...enterpriseData];
+  const prompt = allPrompts.find(p => p.id === id);
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
 
   const copyToClipboard = (text: string, type: string) => {
